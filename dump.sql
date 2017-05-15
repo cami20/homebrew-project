@@ -1,16 +1,335 @@
-Six-Row Pale Malt | 6-Row is a base malt with a higher diastic power than 2-Row Malt to help convert other adjuncts. 6-Row has a moderate malty flavour. | 2 | 4 | 150 | 1.03499999999999992 | 13 | 100 | Y |  | UNITED STATES
-Smoked Malt | Malt that has been smoked over an open fire to create a distinctive "smoked" flavor and aroma. Used primarily for German Rauchbier but can also be added to Brown Ales and Porters. | 9 | 4 | 0 | 1.03699999999999992 | 11.5 | 100 | Y | Imparts a smoked quality upon the beer. | GERMANY
-Special B Malt | Special B refers to a type of dark, flavorful crystal malt traditionally malted in Belgium. In small amounts, it gives a unique flavor to the finished beer that is often compared to raisins or dried fruit. | 41 | 0 | 0 | 1.03000000000000003 | 0 | 10 | N | Imparts an aromatic quality upon the beer. | 
-Special Roast | Use for English ales, nut brown ales and porters. Adds a toasted, biscuit like flavor and aroma. | 50 | 2.5 | 6 | 1.03299999999999992 | 10.5 | 10 | Y | Imparts an aromatic quality upon the beer. | UNITED STATES
-Toasted Malt | A malt that adds reddish orange color and body without adding sweetness. | 5 | 4 | 75 | 1.02899999999999991 | 10.3000000000000007 | 15 | Y | Imparts an aromatic quality upon the beer. | UNITED STATES
-Two-Row Pale Malt | The is the standard starting point for almost all beer recipes. Smooth with a less grainy more moderate flavour. | 2 | 4 | 140 | 1.03600000000000003 | 12.3000000000000007 | 100 | Y |  | UNITED STATES
-Two-Row Pilsner Malt - Belgian | This base malt is used primarily for Pilsner style beers.  Base malt for Continental lagers | 2 | 4 | 105 | 1.03600000000000003 | 10.5 | 100 | Y |  | BELGIUM
-Two-Row Pilsner Malt - Germany | This base malt is used primarily for Pilsner style beers.  Pilsner/Bohemian Lager Base | 2 | 4 | 110 | 1.03699999999999992 | 11 | 100 | Y |  | GERMANY
-Two-Row Pilsner Malt - UK | This base malt is used primarily for Pilsner style beers. Pilsner base malt | 1 | 4 | 60 | 1.03600000000000003 | 10 | 100 | Y |  | UNITED KINGDOM
-Victory Malt | Toasted malt that adds a "Nutty", "Biscuit", "Baking Bread" and/or toasted flavor to English ales. | 26 | 4 | 0 | 1.03400000000000003 | 13.1999999999999993 | 15 | Y | Imparts an aromatic quality upon the beer. | UNITED STATES
-Vienna Malt | Vienna Malt is a kiln-dried barley malt darker than pale ale malt, but not as dark as Munich Malt. It imparts a golden to orange color and a distinctive toast or biscuit malt aroma to the beer. | 4 | 0 | 0 | 1.03600000000000003 | 0 | 90 | Y |  | 
-Wheat Malt - Dark | Dark malted wheat base for use in dark wheat styles such as Dunkleweizen. | 9 | 3.5 | 10 | 1.03899999999999992 | 11.5 | 20 | Y |  | GERMANY
-Wheat Malt - German | Malted wheat base for use in all wheat styles. | 2 | 4 | 130 | 1.04000000000000004 | 14.5 | 60 | Y |  | GERMANY
-Wheat Malt - White | White wheat gives a malty flavor not available from raw wheat. | 2 | 4 | 130 | 1.04000000000000004 | 14.5 | 60 | Y | Imparts a malty flavor upon the beer. | UNITED STATES
+--
+-- PostgreSQL database dump
+--
 
+-- Dumped from database version 9.5.6
+-- Dumped by pg_dump version 9.5.6
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: category; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE category (
+    category_id integer NOT NULL,
+    name character varying(35)
+);
+
+
+ALTER TABLE category OWNER TO vagrant;
+
+--
+-- Name: category_category_id_seq; Type: SEQUENCE; Schema: public; Owner: vagrant
+--
+
+CREATE SEQUENCE category_category_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE category_category_id_seq OWNER TO vagrant;
+
+--
+-- Name: category_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vagrant
+--
+
+ALTER SEQUENCE category_category_id_seq OWNED BY category.category_id;
+
+
+--
+-- Name: fermentables; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE fermentables (
+    name character varying(35) NOT NULL,
+    description character varying(450) NOT NULL,
+    "srmId" double precision,
+    "moistureContent" double precision,
+    "diastaticPower" double precision,
+    potential double precision,
+    protein double precision,
+    "maxInBatch" double precision,
+    "requiresMashing" character varying(10),
+    characteristics character varying(200),
+    country character varying(15)
+);
+
+
+ALTER TABLE fermentables OWNER TO vagrant;
+
+--
+-- Name: hops; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE hops (
+    name character varying(35) NOT NULL,
+    description character varying(1400) NOT NULL,
+    "alphaMin" double precision,
+    "alphaMax" double precision,
+    "betaMin" double precision,
+    "betaMax" double precision,
+    "originCountry" character varying(20)
+);
+
+
+ALTER TABLE hops OWNER TO vagrant;
+
+--
+-- Name: styles; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE styles (
+    "styleId" integer NOT NULL,
+    name character varying(65) NOT NULL,
+    description character varying(2950),
+    "abvMin" double precision,
+    "abvMax" double precision,
+    "ibuMin" double precision,
+    "ibuMax" double precision,
+    "ogMin" double precision,
+    "ogMax" double precision,
+    "fgMin" double precision,
+    "fgMax" double precision,
+    "srmMin" double precision,
+    "srmMax" double precision,
+    category character varying(35)
+);
+
+
+ALTER TABLE styles OWNER TO vagrant;
+
+--
+-- Name: styles_styleId_seq; Type: SEQUENCE; Schema: public; Owner: vagrant
+--
+
+CREATE SEQUENCE "styles_styleId_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "styles_styleId_seq" OWNER TO vagrant;
+
+--
+-- Name: styles_styleId_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vagrant
+--
+
+ALTER SEQUENCE "styles_styleId_seq" OWNED BY styles."styleId";
+
+
+--
+-- Name: yeasts; Type: TABLE; Schema: public; Owner: vagrant
+--
+
+CREATE TABLE yeasts (
+    yeast_id integer NOT NULL,
+    name character varying(30) NOT NULL,
+    description character varying(800) NOT NULL,
+    "yeastType" character varying(15),
+    "fermentTempMin" double precision,
+    "fermentTempMax" double precision,
+    "alcoholToleranceMin" double precision,
+    "alcoholToleranceMax" double precision,
+    "yeastFormat" character varying(10)
+);
+
+
+ALTER TABLE yeasts OWNER TO vagrant;
+
+--
+-- Name: yeasts_yeast_id_seq; Type: SEQUENCE; Schema: public; Owner: vagrant
+--
+
+CREATE SEQUENCE yeasts_yeast_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE yeasts_yeast_id_seq OWNER TO vagrant;
+
+--
+-- Name: yeasts_yeast_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: vagrant
+--
+
+ALTER SEQUENCE yeasts_yeast_id_seq OWNED BY yeasts.yeast_id;
+
+
+--
+-- Name: category_id; Type: DEFAULT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY category ALTER COLUMN category_id SET DEFAULT nextval('category_category_id_seq'::regclass);
+
+
+--
+-- Name: styleId; Type: DEFAULT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY styles ALTER COLUMN "styleId" SET DEFAULT nextval('"styles_styleId_seq"'::regclass);
+
+
+--
+-- Name: yeast_id; Type: DEFAULT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY yeasts ALTER COLUMN yeast_id SET DEFAULT nextval('yeasts_yeast_id_seq'::regclass);
+
+
+--
+-- Data for Name: category; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY category (category_id, name) FROM stdin;
+\.
+
+
+--
+-- Name: category_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
+--
+
+SELECT pg_catalog.setval('category_category_id_seq', 1, false);
+
+
+--
+-- Data for Name: fermentables; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY fermentables (name, description, "srmId", "moistureContent", "diastaticPower", potential, protein, "maxInBatch", "requiresMashing", characteristics, country) FROM stdin;
+\.
+
+
+--
+-- Data for Name: hops; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY hops (name, description, "alphaMin", "alphaMax", "betaMin", "betaMax", "originCountry") FROM stdin;
+\.
+
+
+--
+-- Data for Name: styles; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY styles ("styleId", name, description, "abvMin", "abvMax", "ibuMin", "ibuMax", "ogMin", "ogMax", "fgMin", "fgMax", "srmMin", "srmMax", category) FROM stdin;
+\.
+
+
+--
+-- Name: styles_styleId_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
+--
+
+SELECT pg_catalog.setval('"styles_styleId_seq"', 1, false);
+
+
+--
+-- Data for Name: yeasts; Type: TABLE DATA; Schema: public; Owner: vagrant
+--
+
+COPY yeasts (yeast_id, name, description, "yeastType", "fermentTempMin", "fermentTempMax", "alcoholToleranceMin", "alcoholToleranceMax", "yeastFormat") FROM stdin;
+\.
+
+
+--
+-- Name: yeasts_yeast_id_seq; Type: SEQUENCE SET; Schema: public; Owner: vagrant
+--
+
+SELECT pg_catalog.setval('yeasts_yeast_id_seq', 1, false);
+
+
+--
+-- Name: category_name_key; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY category
+    ADD CONSTRAINT category_name_key UNIQUE (name);
+
+
+--
+-- Name: category_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY category
+    ADD CONSTRAINT category_pkey PRIMARY KEY (category_id);
+
+
+--
+-- Name: fermentables_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY fermentables
+    ADD CONSTRAINT fermentables_pkey PRIMARY KEY (name);
+
+
+--
+-- Name: hops_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY hops
+    ADD CONSTRAINT hops_pkey PRIMARY KEY (name);
+
+
+--
+-- Name: styles_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY styles
+    ADD CONSTRAINT styles_pkey PRIMARY KEY ("styleId");
+
+
+--
+-- Name: yeasts_pkey; Type: CONSTRAINT; Schema: public; Owner: vagrant
+--
+
+ALTER TABLE ONLY yeasts
+    ADD CONSTRAINT yeasts_pkey PRIMARY KEY (yeast_id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
 

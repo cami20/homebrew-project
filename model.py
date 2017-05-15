@@ -11,7 +11,7 @@ class Styles(db.Model):
 
 	__tablename__ = "styles"
 
-	style_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	styleId = db.Column(db.Integer, autoincrement=True, primary_key=True)
 	name = db.Column(db.String(65), nullable=False)
 	description = db.Column(db.String(2950))
 	abvMin = db.Column(db.Float)

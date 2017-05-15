@@ -49,5 +49,3 @@ Vienna Malt | Vienna Malt is a kiln-dried barley malt darker than pale ale malt,
 Wheat Malt - Dark | Dark malted wheat base for use in dark wheat styles such as Dunkleweizen. | 9 | 3.5 | 10 | 1.03899999999999992 | 11.5 | 20 | Y |  | GERMANY
 Wheat Malt - German | Malted wheat base for use in all wheat styles. | 2 | 4 | 130 | 1.04000000000000004 | 14.5 | 60 | Y |  | GERMANY
 Wheat Malt - White | White wheat gives a malty flavor not available from raw wheat. | 2 | 4 | 130 | 1.04000000000000004 | 14.5 | 60 | Y | Imparts a malty flavor upon the beer. | UNITED STATES
-
-
