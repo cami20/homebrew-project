@@ -1,0 +1,15 @@
+1 | British Origin Ales
+2 | Irish Origin Ales
+3 | North American Origin Ales
+4 | German Origin Ales
+5 | Belgian And French Origin Ales
+6 | International Ale Styles
+7 | European-germanic Lager
+8 | North American Lager
+9 | Other Lager
+10 | International Styles
+11 | Hybrid/mixed Beer
+12 | Mead, Cider, & Perry
+13 | Other Origin
+14 | Malternative Beverages
+15 | ""
