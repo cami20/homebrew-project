@@ -4,7 +4,7 @@ from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, db
+from model import connect_to_db, db, Styles
 
 app = Flask(__name__)
 
@@ -28,7 +28,14 @@ def ingredients():
 def styles():
 	"""Displays the styles landing page."""
 
-	return render_template('styles.html')
+	style = Styles.query.all()
+	styles = []
+	for s in style:
+		s = s.name
+		styles.append(s)
+
+
+	return render_template('styles.html', styles=styles)
 
 @app.route('/login')
 def login():
@@ -65,7 +72,7 @@ def new_account():
 
 	return render_template('new_account.html')
 
-@app.route('/new-account', methods=['POST'])
+@app.route('/new-account') #, methods=['POST'])
 def new_account_process():
 	"""Process the registration."""
 
@@ -106,6 +113,12 @@ def display_random():
 	"""Displays the random ingredients game."""
 
 	return render_template('random_beer.html')
+
+@app.route('/profile')
+def display_profile():
+	"""Displays a users profile"""
+
+	return render_template('profile.html')
 
 
 if __name__ == "__main__":
