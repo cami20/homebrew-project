@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> This is where new users can create an account to start logging their projects!</h1>
+
+<h2>Please Create an Account!</h2>
+
+<h2>username</h2>
+
+<h2>password</h2>
+
+<h2>email</h2>
+
+<h2>submit button</h2>
+
+
+
+<div>
+<h1>Create a new account</h1>
+
+<form action="/new-account" method="POST">
+	<div>
+		<label>
+			Please enter your email:
+			<input type="email" name="email">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your username:
+			<input type="text" name="username">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your password:
+			<input type="password" name="password">
+		</label>
+	</div>
+		<input type="submit">
+	</div>
+
+	<a href="/login">Already have an account please log in!</a>
+
+</form>
+
+</div>
+
+{% endblock %}

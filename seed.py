@@ -13,15 +13,13 @@ def load_styles():
 	for i, row in enumerate(open("seed_data/styles.sql")):
 		row = row.rstrip()
 
-		# try:
+
 		styleId, name, description, abvMin, abvMax, ibuMin, ibuMax, ogMin, ogMax, fgMin, fgMax, srmMin, srmMax, category = row.split("|")
 
 		styles = Styles(styleId=styleId, name=name, description=description, abvMin=abvMin, 
 					abvMax=abvMax, ibuMin=ibuMin, ibuMax=ibuMax,
 				ogMin=ogMin, ogMax=ogMax, fgMin=fgMin, fgMax=fgMax,
 				srmMin=srmMin, srmMax=srmMax, category=category)
-		# except ValueError:
-		# 	import pdb; pdb.set_trace()
 
 		db.session.add(styles)
 

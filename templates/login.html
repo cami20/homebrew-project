@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> This is where my users will log into their accounts!</h1>
+
+<h2>Log in Please!</h2>
+
+<h2>username or email</h2>
+
+<h2>password</h2>
+
+<h2>login button</h2>
+
+<div>
+	<h1>Login</h1>
+	<form action="/login" method="POST">
+		<div>
+			<label>Please Enter your email or username:
+				<input type="text" name="username">
+			</label>
+		</div>
+
+		<div>
+			<label>Please enter your password:
+				<input type="password" name="password">
+			</label>
+		</div>
+
+		<div>
+			<input type="submit">
+		</div>
+	</form>
+
+	<a href="/new-account">Please click here to create a new account.</a>
+
+</div>
+
+{% endblock %}
