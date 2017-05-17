@@ -10,7 +10,7 @@
 
 {% for yeast in yeasts %}
 	<li>
-		{{ yeast }}
+		<a href="/yeast-display/{{ yeast.name }}">{{ yeast.name }}</a>
 	</li>
 {% endfor %}
 

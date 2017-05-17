@@ -28,20 +28,15 @@ def ingredients():
 def styles():
 	"""Displays the styles landing page."""
 
-	style = Styles.query.all()
-	styles = []
-	for s in style:
-		s = s.name
-		styles.append(s)
-
+	styles = Styles.query.all()
 	return render_template('styles.html', styles=styles)
 
-@app.route('/style-display')
-def style_display():
+@app.route('/style-display/<name>')
+def style_display(name):
 	"""Will display the selected style's information."""
 
-	styles = Styles.query.filter_by(name='Oatmeal Stout').all()
-	return render_template('styles_display.html', styles=styles[0])
+	styles = Styles.query.filter_by(name=name).first()
+	return render_template('styles_display.html', styles=styles)
 
 @app.route('/login')
 def login():
@@ -100,68 +95,43 @@ def new_account_process():
 def yeast_info():
 	"""Displays info about yeast."""
 
-	yeast = Yeast.query.all()
-	yeasts = []
-
-	for y in yeast:
-		y = y.name
-		yeasts.append(y)
-
+	yeasts = Yeast.query.all()
 	return render_template('yest.html', yeasts=yeasts)
 
-@app.route('/yeast-display')
-def yeast_display():
+@app.route('/yeast-display/<name>')
+def yeast_display(name):
 	"""Displays the specific info about a yeast."""
 
-	yeast = Yeast.query.filter_by(name='Abbey Ale').all()
-	return render_template('yeast_display.html', yeast=yeast[0])
+	yeast = Yeast.query.filter_by(name=name).first()
+	return render_template('yeast_display.html', yeast=yeast)
 
 @app.route('/hops')
 def hops_info():
 	"""Displays info about hops."""
 
-	hop = Hops.query.all()
-	hops = []
-
-	for h in hop:
-		h = h.name
-		hops.append(h)
-
+	hops = Hops.query.all()
 	return render_template('hops.html', hops=hops)
 
-@app.route('/hops-display')
-def hops_display():
-	"""Displays the soecific info about a hop."""
+@app.route('/hops-display/<name>')
+def hops_display(name):
+	"""Displays the specific info about a hop."""
 
-	hops = Hops.query.filter_by(name='Cascade').all()
-	return render_template('hops_display.html', hops=hops[0])
+	hops = Hops.query.filter_by(name=name).first()
+	return render_template('hops_display.html', hops=hops)
 
 @app.route('/fermentables')
 def fermentables_info():
 	"""Displays info about fermentables."""
 
-	ferment = Fermentables.query.all()
-	fermentables = []
-
-	for f in ferment:
-		f = f.name
-		fermentables.append(f)
-
+	fermentables = Fermentables.query.all()
 	return render_template('ferment.html', fermentables=fermentables)
 
-@app.route('/fermentable-display', methods=["GET"])
-def fermentable_display():
+@app.route('/fermentable-display/<name>', methods=["GET"])
+def fermentable_display(name):
 	"""Displays the specific info about a fermentable."""
 
-	#This is my first attempt at geting specific data into my website
-	# fermentables = Fermentables.query.filter_by(name='Amber Malt').all()
-
-	# second attempt at getting specific data into my website. 
-	# ferment_name = 'Amber Malt'
-	# fermentables = Fermentables.query.filter(Fermentables.name == ferment_name).all()
-
-	fermentables = Fermentables.query.filter_by(name='Brown Malt').all()
-	return render_template('ferment_display.html', fermentables=fermentables[0])
+	fermentables = Fermentables.query.filter_by(name=name).first()
+	return render_template('ferment_display.html', fermentables=fermentables)
 
 @app.route('/random')
 def display_random():

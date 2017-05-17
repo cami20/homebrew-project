@@ -10,7 +10,7 @@
 
 {% for hop in hops %}
 	<li>
-		{{ hop }}
+		<a href="/hops-display/{{ hop.name }}">{{ hop.name }}</a>
 	</li>
 {% endfor %}
 

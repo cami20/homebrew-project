@@ -10,7 +10,7 @@
 
 {% for ferment in fermentables %}
 	<li>
-		{{ ferment }}
+		<a href="/fermentable-display/{{ ferment.name }}">{{ ferment.name }}</a>
 	</li>
 {% endfor %}
 
