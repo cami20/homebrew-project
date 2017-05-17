@@ -40,7 +40,8 @@ def styles():
 def style_display():
 	"""Will display the selected style's information."""
 
-	return render_template('styles_display.html')
+	styles = Styles.query.filter_by(name='Oatmeal Stout').all()
+	return render_template('styles_display.html', styles=styles[0])
 
 @app.route('/login')
 def login():
@@ -108,6 +109,13 @@ def yeast_info():
 
 	return render_template('yest.html', yeasts=yeasts)
 
+@app.route('/yeast-display')
+def yeast_display():
+	"""Displays the specific info about a yeast."""
+
+	yeast = Yeast.query.filter_by(name='Abbey Ale').all()
+	return render_template('yeast_display.html', yeast=yeast[0])
+
 @app.route('/hops')
 def hops_info():
 	"""Displays info about hops."""
@@ -125,7 +133,8 @@ def hops_info():
 def hops_display():
 	"""Displays the soecific info about a hop."""
 
-	return render_template('hops_display.html')
+	hops = Hops.query.filter_by(name='Cascade').all()
+	return render_template('hops_display.html', hops=hops[0])
 
 @app.route('/fermentables')
 def fermentables_info():

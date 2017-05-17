@@ -65,10 +65,10 @@ class Yeast(db.Model):
 	yeastFormat = db.Column(db.String(10))
 		# db.ForeignKey('yeast_form.form_found'))
 
-	def __repr__(self):
-		"""Provides basic info when printed"""
+	# def __repr__(self):
+	# 	"""Provides basic info when printed"""
 
-		return "Yeast name= %s, form found in= %s" % (self.name, self.yeastFormat)
+	# 	return "Yeast name= %s, form found in= %s" % (self.name, self.yeastFormat)
 
 
 # class YeastForm(db.Model):

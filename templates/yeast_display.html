@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> This is where the specifics about an individual yeast will be displayed</h1>
+
+<h2>Yeast!</h2>
+
+Name: {{ yeast.name }}
+<br>
+Description: {{ yeast.description }}
+<br>
+Type: {{ yeast.yeastType }}
+<br>
+Lowest Temp: {{ yeast.fermentTempMin }}
+<br>
+Max Temp: {{ yeast.fermentTempMax }}
+<br>
+Alcohol Min: {{ yeast.alcoholToleranceMin }}
+<br>
+Alcohol Max: {{ yeast.alcoholToleranceMax }}
+<br>
+Yeast Format: {{ yeast.yeastFormat }}
+
+<br>
+<a href="/yeast">back</a>
+
+{% endblock %}
