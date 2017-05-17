@@ -4,7 +4,7 @@ from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, db, Styles, Yeast, Hops, Fermentables
+from model import connect_to_db, db, Styles, Yeast, Hops, Fermentables, User
 
 app = Flask(__name__)
 
@@ -73,7 +73,7 @@ def new_account():
 
 	return render_template('new_account.html')
 
-@app.route('/new-account') #, methods=['POST'])
+@app.route('/new-account', methods=['POST'])
 def new_account_process():
 	"""Process the registration."""
 
@@ -82,11 +82,11 @@ def new_account_process():
 	username = request.form["username"]
 	password = request.form["password"]
 
-	#use the code below to add users to the database.
-	# new_user = User(email=email, username=username, password=password)
+	# use the code below to add users to the database.
+	new_user = User(email=email, username=username, password=password)
 
-	# db.session.add(new_user)
-	# db.session.commit()
+	db.session.add(new_user)
+	db.session.commit()
 
 	flash("User %s added." % email)
 	return redirect("/")

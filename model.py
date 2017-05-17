@@ -173,19 +173,19 @@ class Fermentables(db.Model):
 # 								backref=db.backref("ProjectFerment", order_by=project_id))
 
 
-# class User(db.Model):
-# 	"""User of the website."""
+class User(db.Model):
+	"""User of the website."""
 
-# 	__tablename__ = "users"
+	__tablename__ = "users"
 
-# 	username = db.Column(db.String(20), primary_key=True, nullable=False, unique=True)
-# 	password = db.Column(db.String(20), nullable=False)
-# 	email = db.Column(db.String(50), nullable=False)
+	username = db.Column(db.String(20), primary_key=True, nullable=False, unique=True)
+	password = db.Column(db.String(20), nullable=False)
+	email = db.Column(db.String(50), nullable=False)
 
-# 	def __repr__(self):
-# 		"""Proviedes basic info when printed"""
+	def __repr__(self):
+		"""Proviedes basic info when printed"""
 
-# 		return "username= %s, email= %s" % (self.username, self.email)
+		return "username= %s, email= %s" % (self.username, self.email)
 
 
 # class Project(db.Model):
