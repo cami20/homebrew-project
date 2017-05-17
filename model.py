@@ -29,7 +29,7 @@ class Styles(db.Model):
 	def __repr__(self):
 		"""Provides basic info when printed"""
 
-		return "Styles name= %s, category= %s" % (self.name, self.category)
+		return "Styles name= %s, category= %s, id=%d" % (self.name, self.category, self.styleId)
 
 
 class Category(db.Model):
@@ -68,7 +68,7 @@ class Yeast(db.Model):
 	def __repr__(self):
 		"""Provides basic info when printed"""
 
-		return "Yeast name= %s, form found in= %s" % (self.name, self.form_found)
+		return "Yeast name= %s, form found in= %s" % (self.name, self.yeastFormat)
 
 
 # class YeastForm(db.Model):
@@ -100,7 +100,7 @@ class Hops(db.Model):
 	def __repr__(self):
 		"""Provides basic info when printed"""
 
-		return "Hops name= %s, typpically used for= %s" % (self.name, self.typical_use)
+		return "Hops name= %s" % (self.name) #, , typpically used for= %s self.typical_use)
 
 
 # class HopUse(db.Model):
@@ -148,10 +148,12 @@ class Fermentables(db.Model):
 	characteristics = db.Column(db.String(200))
 	country = db.Column(db.String(15))
 
-# 	def __repr__(self):
-# 		"""Provides basic info when printed."""
+	# def __repr__(self):
+		# """Provides basic info when printed."""
 
-# 		return "Fermentable name= %s" % (self.name)
+		#original repr
+		#return "Fermentable name= %s" % (self.name)
+		# return "name: %s\n description: %s\n SRM: %s\n Moisture Content: %s\n Country: %s\n" % (self.name, self.description, self.srmId, self.moistureContent, self.country)
 
 
 # class ProjectFerment(db.Model):

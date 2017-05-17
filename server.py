@@ -4,7 +4,7 @@ from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, db, Styles
+from model import connect_to_db, db, Styles, Yeast, Hops, Fermentables
 
 app = Flask(__name__)
 
@@ -34,8 +34,13 @@ def styles():
 		s = s.name
 		styles.append(s)
 
-
 	return render_template('styles.html', styles=styles)
+
+@app.route('/style-display')
+def style_display():
+	"""Will display the selected style's information."""
+
+	return render_template('styles_display.html')
 
 @app.route('/login')
 def login():
@@ -94,19 +99,60 @@ def new_account_process():
 def yeast_info():
 	"""Displays info about yeast."""
 
-	return render_template('yest.html')
+	yeast = Yeast.query.all()
+	yeasts = []
+
+	for y in yeast:
+		y = y.name
+		yeasts.append(y)
+
+	return render_template('yest.html', yeasts=yeasts)
 
 @app.route('/hops')
 def hops_info():
 	"""Displays info about hops."""
 
-	return render_template('hops.html')
+	hop = Hops.query.all()
+	hops = []
+
+	for h in hop:
+		h = h.name
+		hops.append(h)
+
+	return render_template('hops.html', hops=hops)
+
+@app.route('/hops-display')
+def hops_display():
+	"""Displays the soecific info about a hop."""
+
+	return render_template('hops_display.html')
 
 @app.route('/fermentables')
 def fermentables_info():
 	"""Displays info about fermentables."""
 
-	return render_template('ferment.html')
+	ferment = Fermentables.query.all()
+	fermentables = []
+
+	for f in ferment:
+		f = f.name
+		fermentables.append(f)
+
+	return render_template('ferment.html', fermentables=fermentables)
+
+@app.route('/fermentable-display', methods=["GET"])
+def fermentable_display():
+	"""Displays the specific info about a fermentable."""
+
+	#This is my first attempt at geting specific data into my website
+	# fermentables = Fermentables.query.filter_by(name='Amber Malt').all()
+
+	# second attempt at getting specific data into my website. 
+	# ferment_name = 'Amber Malt'
+	# fermentables = Fermentables.query.filter(Fermentables.name == ferment_name).all()
+
+	fermentables = Fermentables.query.filter_by(name='Brown Malt').all()
+	return render_template('ferment_display.html', fermentables=fermentables[0])
 
 @app.route('/random')
 def display_random():

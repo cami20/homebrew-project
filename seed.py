@@ -6,6 +6,10 @@ from pprint import pprint
 
 from model import Styles, Category, Yeast, Hops, Fermentables, connect_to_db, db
 from server import app
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 def load_styles():
 	"""Load styles from a seed file."""
@@ -14,12 +18,12 @@ def load_styles():
 		row = row.rstrip()
 
 
-		styleId, name, description, abvMin, abvMax, ibuMin, ibuMax, ogMin, ogMax, fgMin, fgMax, srmMin, srmMax, category = row.split("|")
+		styleId, name, description, abvMin, abvMax, ibuMin, ibuMax, ogMin, ogMax, fgMin, fgMax, srmMin, srmMax, category = row.split(" | ")
 
-		styles = Styles(styleId=styleId, name=name, description=description, abvMin=abvMin, 
+		styles = Styles(styleId=styleId, name=str(name), description=str(description), abvMin=str(abvMin), 
 					abvMax=abvMax, ibuMin=ibuMin, ibuMax=ibuMax,
 				ogMin=ogMin, ogMax=ogMax, fgMin=fgMin, fgMax=fgMax,
-				srmMin=srmMin, srmMax=srmMax, category=category)
+				srmMin=srmMin, srmMax=srmMax, category=str(category))
 
 		db.session.add(styles)
 
@@ -33,7 +37,7 @@ def load_category():
 
 	for i, row in enumerate(open("seed_data/u.category.txt")):
 		row = row.rstrip()
-		name = row.split("|")[1]
+		name = row.split(" | ")[1]
 
 		category = Category(name=name)
 
@@ -95,13 +99,18 @@ def load_fermentables():
 	for i, row in enumerate(open("seed_data/ferment.sql")):
 		row = row.rstrip()
 
-		name, description, srmId, moistureContent, diastaticPower, potential, protein, maxInBatch, requiresMashing, characteristics, country = row.split("|")
+		try:
+			name, description, srmId, moistureContent, diastaticPower, potential, protein, maxInBatch, requiresMashing, characteristics, country = row.split(" | ")
 
-		fermentables = Fermentables(name=name, description=description, srmId=srmId,
-			moistureContent=moistureContent, diastaticPower=diastaticPower,
-			potential=potential, protein=protein, maxInBatch=maxInBatch,
-			requiresMashing=requiresMashing, characteristics=characteristics,
-			country=country)
+			fermentables = Fermentables(name=name, description=description, srmId=srmId,
+				moistureContent=moistureContent, diastaticPower=diastaticPower,
+				potential=potential, protein=protein, maxInBatch=maxInBatch,
+				requiresMashing=requiresMashing, characteristics=characteristics,
+				country=country)
+
+		except ValueError:
+			print i
+			import pdb; pdb.set_trace()
 
 
 		db.session.add(fermentables)

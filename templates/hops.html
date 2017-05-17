@@ -7,6 +7,16 @@
 
 <h2>lots of cool data</h2>
 
+
+{% for hop in hops %}
+	<li>
+		{{ hop }}
+	</li>
+{% endfor %}
+
+
+<a href="/hops-display">hop display</a>
+<br>
 <a href="/ingredients">back</a>
 
 {% endblock %}

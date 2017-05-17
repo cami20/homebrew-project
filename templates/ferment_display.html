@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> This is where the specifics about an individual fermentable will be displayed</h1>
+
+<h2>Fermentable!</h2>
+
+Name: {{ fermentables.name }}
+<br>
+Description: {{ fermentables.description }}
+<br>
+SRM: {{ fermentables.srmId }}
+<br>
+Moisture Content: {{ fermentables.moistureContent }}
+<br>
+Diastatic Powder: {{ fermentables.diastaticPower }}
+<br>
+Potential Gravity: {{ fermentables.potential }}
+<br>
+Protein: {{ fermentables.protein }}
+<br>
+Max amount to have in Batch: {{ fermentables.maxInBatch }}
+<br>
+Does it require mashing: {{ fermentables.requiresMashing }}
+<br>
+Characteristics: {{ fermentables.characteristics }}
+<br>
+Country of Origin: {{ fermentables.country }}
+
+<br>
+<a href="/fermentables">back</a>
+
+{% endblock %}

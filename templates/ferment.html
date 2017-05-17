@@ -7,6 +7,15 @@
 
 <h2>lots of cool data</h2>
 
+
+{% for ferment in fermentables %}
+	<li>
+		{{ ferment }}
+	</li>
+{% endfor %}
+
+<a href="/fermentable-display">display fermentable</a>
+<br>
 <a href="/ingredients">back</a>
 
 {% endblock %}
