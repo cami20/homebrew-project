@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> This is where users can create a new project that can be accessed from the database so the user can see what they have done!</h1>
+
+<h2>Please Create a new Project!</h2>
+
+
+<div>
+<h1>Create a new Project</h1>
+
+<form action="/new-project" method="POST">
+	<div>
+		<label>
+			Please enter your project name:
+			<input type="text" name="project_name" required>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter the style you used:
+			<input type="text" name="style">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter the yeast you used:
+			<input type="text" name="yeast" required>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter the hops you used:
+			<input type="text" name="hops" required>
+			<input type="text" name="hops2">
+			<input type="text" name="hops3">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter the fermentables you used:
+			<input type="text" name="fermentables" required>
+			<input type="text" name="fermentables2">
+			<input type="text" name="fermentables3">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your Original Gravity:
+			<input type="text" name="og">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your Final Gravity:
+			<input type="text" name="fg">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your ABV:
+			<input type="text" name="abv">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your SRM:
+			<input type="text" name="srm">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your project notes:
+			<input type="text" name="notes">
+		</label>
+	</div>
+
+	<div>
+		<input type="submit">
+	</div>
+
+	<a href="/profile">Back</a>
+
+</form>
+
+</div>
+
+{% endblock %}

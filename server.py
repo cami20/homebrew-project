@@ -4,7 +4,7 @@ from jinja2 import StrictUndefined
 
 from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
-from model import connect_to_db, db, Styles, Yeast, Hops, Fermentables, User
+from model import connect_to_db, db, Styles, Yeast, Hops, Fermentables, User , Project
 
 app = Flask(__name__)
 
@@ -52,20 +52,26 @@ def login_process():
 	password = request.form["password"]
 
 	# use the code below to validate users and log them into their accounts
-	# user = User.query.filter_by(email=username | username=username).first()
+	user = User.query.filter((User.email==username) | (User.username==username)).first()
 
-	# if not user:
-	# 	flash("Your information is not in our records. Please try again.")
-	# 	return redirect("/login")
+	if not user:
+		flash("Your information is not in our records. Please try again.")
+		return redirect("/login")
 
-	# if user.password != password:
-	# 	flash("Incorrect password")
-	# 	return redirect("/login")
+	if user.password != password:
+		flash("Incorrect password")
+		return redirect("/login")
 
-	# session["user_id"] = user.user_id
+	session["username"] = user.username
 
 	flash("Logged in")
 	return redirect("/")
+
+@app.route('/logout')
+def logout():
+	del session['username']
+	flash('Logged out.')
+	return redirect('/')
 
 @app.route('/new-account', methods=['GET'])
 def new_account():
@@ -90,6 +96,8 @@ def new_account_process():
 
 	flash("User %s added." % email)
 	return redirect("/")
+
+	#TODO: make it so there can't be dublicate accounts
 
 @app.route('/yeast')
 def yeast_info():
@@ -144,6 +152,44 @@ def display_profile():
 	"""Displays a users profile"""
 
 	return render_template('profile.html')
+
+@app.route('/new-project')
+def display_new_project():
+	"""Displays the new project form."""
+	#make text box for notes bigger in the CSS file
+	return render_template('new-project-form.html')
+
+@app.route('/new-project', methods=['POST'])
+def new_project_process():
+	"""Process of adding a new project."""
+
+	# Get form variables
+	name = request.form['project_name']
+	style = request.form['style']
+	yeast = request.form['yeast']
+	hops = request.form['hops']
+	hops2 = request.form['hops2']
+	hops3 = request.form['hops3']
+	fermentables = request.form['fermentables']
+	fermentables2 = request.form['fermentables2']
+	fermentables3 = request.form['fermentables3']
+	og = request.form['og']
+	fg = request.form['fg']
+	abv = request.form['abv']
+	srm = request.form['srm']
+	notes = request.form['notes']
+
+	#use the code below to add projects to the database.
+	new_project = Project(project_name=name, style=style, yeast=yeast,hops=hops, 
+						hops2=hops2, hops3=hops3, fermentables=fermentables,
+						fermentables2=fermentables2, fermentables3=fermentables3,
+						og=og, fg=fg, abv=abv, srm=srm, notes=notes)
+
+	db.session.add(new_project)
+	db.session.commit()
+
+	flash("New Project Created")
+	return redirect('/profile')
 
 
 if __name__ == "__main__":

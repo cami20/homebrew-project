@@ -188,27 +188,27 @@ class User(db.Model):
 		return "username= %s, email= %s" % (self.username, self.email)
 
 
-# class Project(db.Model):
-# 	"""Projects stored in the website."""
+class Project(db.Model):
+	"""Projects stored in the website."""
 
-# 	__tablename__ = "projects"
+	__tablename__ = "projects"
 
-# 	project_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-# 	username = db.Column(db.String(20), db.ForeignKey('users.username'))
-# 	project_name = db.Column(db.String(20))
-# 	style = db.Column(db.String(20))
-# 	yeast = db.Column(db.String(20))
-# 	hops = db.Column(db.String(20), nullable=False)
-# 	hops2 = db.Column(db.String(20))
-# 	hops3 = db.Column(db.String(20))
-# 	fermentables = db.Column(db.String(20), nullable=False)
-# 	fermentables2 = db.Column(db.String(20))
-# 	fermentables3 = db.Column(db.String(20))
-# 	og = db.Column(db.Decimal)
-# 	fg = db.Column(db.Decimal)
-# 	abv = db.Column(db.Decimal)
-# 	srm = db.Column(db.Decimal)
-# 	notes = db.Column(db.Text)
+	project_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+	username = db.Column(db.String(20), db.ForeignKey('users.username'))
+	project_name = db.Column(db.String(20))
+	style = db.Column(db.String(20))
+	yeast = db.Column(db.String(20))
+	hops = db.Column(db.String(20), nullable=False)
+	hops2 = db.Column(db.String(20))
+	hops3 = db.Column(db.String(20))
+	fermentables = db.Column(db.String(20), nullable=False)
+	fermentables2 = db.Column(db.String(20))
+	fermentables3 = db.Column(db.String(20))
+	og = db.Column(db.Float)
+	fg = db.Column(db.Float)
+	abv = db.Column(db.Float)
+	srm = db.Column(db.Float)
+	notes = db.Column(db.Text)
 
 # 	user = db.relationship("User", 
 # 							backref=db.backref("projects", order_by=username))
