@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ projects.project_name }}</h1>
+<br>
+style: {{ projects.style }}
+<br>
+yeast: {{ projects.yeast }}
+<br>
+hops: {{ projects.hops }}
+<br>
+hops2: {{ projects.hops2 }}
+<br>
+hops3: {{ projects.hops3 }}
+<br>
+fermentables: {{ projects.fermentables }}
+<br>
+fermentables2: {{ projects.fermentables2 }}
+<br>
+fermentables3: {{ projects.fermentables3 }}
+<br>
+Origional Gravity: {{ projects.og }}
+<br>
+Final Gravity: {{ projects.fg }}
+<br>
+ABV: {{ projects.abv }}
+<br>
+SRM: {{ projects.srm }}
+<br>
+notes: {{ projects.notes }}
+<br>
+
+<a href="/profile">back</a>
+
+{% endblock %}

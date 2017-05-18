@@ -151,7 +151,15 @@ def display_random():
 def display_profile():
 	"""Displays a users profile"""
 
-	return render_template('profile.html')
+	projects = Project.query.all()
+	return render_template('profile.html', projects=projects)
+
+@app.route('/project-display/<name>', methods=['GET'])
+def display_project(name):
+	"""Display the info about a specific project"""
+
+	projects = Project.query.filter_by(project_name=name).first()
+	return render_template('project_display.html', projects=projects)
 
 @app.route('/new-project')
 def display_new_project():
