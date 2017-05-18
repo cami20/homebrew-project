@@ -3,6 +3,10 @@
 
 <h1> Welcome to my cool Home Brew project!</h1>
 
+{% for message in get_flashed_messages() %}
+	<li>{{ message }}</li>
+{% endfor %}
+
 <a href="/ingredients">Ingredients</a>
 <br>
 

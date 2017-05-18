@@ -1,15 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1> This is where my users will log into their accounts!</h1>
-
 <h2>Log in Please!</h2>
 
-<h2>username or email</h2>
-
-<h2>password</h2>
-
-<h2>login button</h2>
+{% for message in get_flashed_messages() %}
+	<li>{{ message }}</li>
+{% endfor %}
 
 <div>
 	<h1>Login</h1>

@@ -90,6 +90,10 @@ def new_account_process():
 	username = request.form["username"]
 	password = request.form["password"]
 
+	if User.query.filter((User.email==email) | (User.username==username)):
+		flash("%s you already have an accout. Please sign in." % username)
+		return redirect("/login")
+
 	# use the code below to add users to the database.
 	new_user = User(email=email, username=username, password=password)
 
@@ -174,6 +178,7 @@ def new_project_process():
 	"""Process of adding a new project."""
 
 	# Get form variables
+	username = session['username']
 	name = request.form['project_name']
 	style = request.form['style']
 	yeast = request.form['yeast']
@@ -190,10 +195,11 @@ def new_project_process():
 	notes = request.form['notes']
 
 	#use the code below to add projects to the database.
-	new_project = Project(project_name=name, style=style, yeast=yeast,hops=hops, 
-						hops2=hops2, hops3=hops3, fermentables=fermentables,
-						fermentables2=fermentables2, fermentables3=fermentables3,
-						og=og, fg=fg, abv=abv, srm=srm, notes=notes)
+	new_project = Project(username=username, project_name=name, style=style, 
+						yeast=yeast,hops=hops, hops2=hops2, hops3=hops3, 
+						fermentables=fermentables,fermentables2=fermentables2, 
+						fermentables3=fermentables3,og=og, fg=fg, abv=abv, 
+						srm=srm, notes=notes)
 
 	db.session.add(new_project)
 	db.session.commit()
@@ -220,6 +226,11 @@ def display_random_beer():
 		hops2 = "None"
 	hops2 = Hops.query.filter_by(hops_id=hops_random2).first()
 
+	hops_random3 = random.randint(0, 83)
+	if hops_random3 == 0:
+		hops3 = "None"
+	hops3 = Hops.query.filter_by(hops_id=hops_random3).first()
+
 	yeast_random = random.randint(1, 132)
 	yeast = Yeast.query.filter_by(yeast_id=yeast_random).first()
 
@@ -231,7 +242,14 @@ def display_random_beer():
 		fermentables2 = "None"
 	fermentables2 = Fermentables.query.filter_by(fermentables_id=ferment_random2).first()
 
-	return render_template('random_beer_display.html', hops=hops, hops2=hops2, yeast=yeast, fermentables=fermentables, fermentables2=fermentables2)
+	ferment_random3 = random.randint(0, 51)
+	if ferment_random2 == 0:
+		fermentables3 = "None"
+	fermentables3 = Fermentables.query.filter_by(fermentables_id=ferment_random3).first()
+
+	return render_template('random_beer_display.html', hops=hops, hops2=hops2, 
+							hops3=hops3, yeast=yeast, fermentables=fermentables, 
+							fermentables2=fermentables2, fermentables3=fermentables3)
 
 
 
