@@ -199,6 +199,19 @@ def new_project_process():
 	flash("New Project Created")
 	return redirect('/profile')
 
+@app.route('/random-beer')
+def random_beer():
+	"""Shows the button to select the random beer"""
+
+	return render_template('random_beer.html')
+
+@app.route('/random-beer-display')
+def display_random_beer():
+	"""Displays the random ingredients choosen."""
+
+	return render_template('random_beer_display.html')
+
+
 
 if __name__ == "__main__":
     app.debug = True

@@ -76,9 +76,9 @@ def load_hops():
 		row = row.rstrip()
 
 		try:
-			name, description, alphaAcidMin, alphaAcidMax, betaAcidMin, betaAcidMax, country = row.split("|")
+			hops_id, name, description, alphaAcidMin, alphaAcidMax, betaAcidMin, betaAcidMax, country = row.split("|")
 
-			hops = Hops(name=name, description=description, alphaMin=alphaAcidMin, 
+			hops = Hops(hops_id=hops_id, name=name, description=description, alphaMin=alphaAcidMin, 
 					alphaMax=alphaAcidMax, betaMin=betaAcidMin, betaMax=betaAcidMax, 
 					originCountry=country)
 
@@ -100,9 +100,10 @@ def load_fermentables():
 		row = row.rstrip()
 
 		try:
-			name, description, srmId, moistureContent, diastaticPower, potential, protein, maxInBatch, requiresMashing, characteristics, country = row.split(" | ")
+			fermentables_id, name, description, srmId, moistureContent, diastaticPower, potential, protein, maxInBatch, requiresMashing, characteristics, country = row.split("|")
 
-			fermentables = Fermentables(name=name, description=description, srmId=srmId,
+			fermentables = Fermentables(fermentables_id=fermentables_id, 
+				name=name, description=description, srmId=srmId, 
 				moistureContent=moistureContent, diastaticPower=diastaticPower,
 				potential=potential, protein=protein, maxInBatch=maxInBatch,
 				requiresMashing=requiresMashing, characteristics=characteristics,

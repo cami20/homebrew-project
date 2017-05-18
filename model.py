@@ -1,7 +1,7 @@
 """Models and database functions for Homew Brew project"""
 
 from flask_sqlalchemy import SQLAlchemy
-#import correlation
+# import correlation
 
 db = SQLAlchemy()
 
@@ -88,6 +88,7 @@ class Hops(db.Model):
 
 	__tablename__ = "hops"
 
+	hops_id = db.Column(db.Integer)
 	name = db.Column(db.String(35), primary_key=True, nullable=False)
 	description = db.Column(db.String(1400), nullable=False)
 	alphaMin = db.Column(db.Float)
@@ -136,6 +137,7 @@ class Fermentables(db.Model):
 
 	__tablename__ = "fermentables"
 
+	fermentables_id = db.Column(db.Integer)
 	name = db.Column(db.String(35), primary_key=True, nullable=False)
 	description = db.Column(db.String(450), nullable=False)
 	srmId = db.Column(db.Float)
