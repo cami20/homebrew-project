@@ -10,7 +10,21 @@
 <h3>Yeast: {{ yeast.name }}</h3>
 
 <h3>Hops: {{ hops.name }}</h3>
+{% if hops2 == None %}
+	<h3>Hops2: None</h3>
+{% endif %}
+{% if hops2 != None %}
+	<h3>Hops2: {{ hops2.name }}</h3>
+{% endif %}
 
 <h3>Fermentables: {{ fermentables.name }}</h3>
+{% if fermentables2 == None %}
+	<h3>Fermentables2: None</h3>
+{% endif %}
+{% if fermentables2 != None %}
+	<h3>Fermentables2: {{ fermentables2.name }}</h3>
+{% endif %}
+
+<a href="/">Back</a>
 
 {% endblock %}

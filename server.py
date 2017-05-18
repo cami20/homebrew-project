@@ -214,13 +214,24 @@ def display_random_beer():
 	hops_random = random.randint(1, 83)
 	hops = Hops.query.filter_by(hops_id=hops_random).first()
 
+	hops_random2 = random.randint(0, 83)
+
+	if hops_random2 == 0:
+		hops2 = "None"
+	hops2 = Hops.query.filter_by(hops_id=hops_random2).first()
+
 	yeast_random = random.randint(1, 132)
 	yeast = Yeast.query.filter_by(yeast_id=yeast_random).first()
 
 	ferment_random = random.randint(1, 51)
 	fermentables = Fermentables.query.filter_by(fermentables_id=ferment_random).first()
 
-	return render_template('random_beer_display.html', hops=hops, yeast=yeast, fermentables=fermentables)
+	ferment_random2 = random.randint(0, 51)
+	if ferment_random2 == 0:
+		fermentables2 = "None"
+	fermentables2 = Fermentables.query.filter_by(fermentables_id=ferment_random2).first()
+
+	return render_template('random_beer_display.html', hops=hops, hops2=hops2, yeast=yeast, fermentables=fermentables, fermentables2=fermentables2)
 
 
 

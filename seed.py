@@ -100,7 +100,7 @@ def load_fermentables():
 		row = row.rstrip()
 
 		try:
-			fermentables_id, name, description, srmId, moistureContent, diastaticPower, potential, protein, maxInBatch, requiresMashing, characteristics, country = row.split("|")
+			fermentables_id, name, description, srmId, moistureContent, diastaticPower, potential, protein, maxInBatch, requiresMashing, characteristics, country = row.split(" | ")
 
 			fermentables = Fermentables(fermentables_id=fermentables_id, 
 				name=name, description=description, srmId=srmId, 
