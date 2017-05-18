@@ -6,6 +6,8 @@ from flask import Flask, render_template, request, flash, redirect, session
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, Styles, Yeast, Hops, Fermentables, User , Project
 
+import random
+
 app = Flask(__name__)
 
 app.secret_key = "shhSecretshh"
@@ -209,7 +211,16 @@ def random_beer():
 def display_random_beer():
 	"""Displays the random ingredients choosen."""
 
-	return render_template('random_beer_display.html')
+	hops_random = random.randint(1, 83)
+	hops = Hops.query.filter_by(hops_id=hops_random).first()
+
+	yeast_random = random.randint(1, 132)
+	yeast = Yeast.query.filter_by(yeast_id=yeast_random).first()
+
+	ferment_random = random.randint(1, 51)
+	fermentables = Fermentables.query.filter_by(fermentables_id=ferment_random).first()
+
+	return render_template('random_beer_display.html', hops=hops, yeast=yeast, fermentables=fermentables)
 
 
 
