@@ -147,12 +147,6 @@ def fermentable_display(name):
 	fermentables = Fermentables.query.filter_by(name=name).first()
 	return render_template('ferment_display.html', fermentables=fermentables)
 
-@app.route('/random')
-def display_random():
-	"""Displays the random ingredients game."""
-
-	return render_template('random_beer.html')
-
 @app.route('/profile')
 def display_profile():
 	"""Displays a users profile"""
