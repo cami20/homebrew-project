@@ -9,7 +9,7 @@
 <div>
 <h1>Create a new Project</h1>
 
-<form action="/new-project" method="POST">
+<form action="/new-project" method="POST" id="newProject">
 	<div>
 		<label>
 			Please enter your project name:
@@ -79,8 +79,8 @@
 
 	<div>
 		<label>
-			Please enter your project notes:
-			<input type="text" name="notes">
+			Please enter your project notes:<br>
+			<textarea name="notes" rows="10" cols="50"></textarea>
 		</label>
 	</div>
 
@@ -91,6 +91,8 @@
 	<a href="/profile">Back</a>
 
 </form>
+
+<!-- <textarea name="notes" form="newProject">Enter your project notes here...</textarea> -->
 
 </div>
 
