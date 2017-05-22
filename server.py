@@ -65,6 +65,7 @@ def login_process():
 		return redirect("/login")
 
 	session["username"] = user.username
+	print "Login check", session['username']
 
 	flash("Logged in")
 	return redirect("/")
@@ -73,6 +74,7 @@ def login_process():
 def logout():
 	del session['username']
 	flash('Logged out.')
+	print "Log out check", session.get('username')
 	return redirect('/')
 
 @app.route('/new-account', methods=['GET'])
@@ -90,7 +92,8 @@ def new_account_process():
 	username = request.form["username"]
 	password = request.form["password"]
 
-	if User.query.filter((User.email==email) | (User.username==username)):
+	if User.query.filter((User.email==email) | (User.username==username)).first():
+		# print "check user in database", User.query.filter((User.email==email) | (User.username==username)).all()
 		flash("%s you already have an accout. Please sign in." % username)
 		return redirect("/login")
 
@@ -101,6 +104,7 @@ def new_account_process():
 	db.session.commit()
 
 	flash("User %s added." % email)
+	session["username"] = new_user.username
 	return redirect("/")
 
 	#TODO: make it so there can't be dublicate accounts
@@ -151,8 +155,15 @@ def fermentable_display(name):
 def display_profile():
 	"""Displays a users profile"""
 
+	#find a way to display empty profile if session is active
+	#or only display profile if you have a session active and hide profile
+	#if you are not signed in 
+	# return render_template('profile.html')
+
+	 # if session['username']:
 	projects = Project.query.all()
 	return render_template('profile.html', projects=projects)
+		
 
 @app.route('/project-display/<name>', methods=['GET'])
 def display_project(name):
