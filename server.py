@@ -2,7 +2,7 @@
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, flash, redirect, session, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, Styles, Yeast, Hops, Fermentables, User , Project
 
@@ -30,17 +30,30 @@ def ingredients():
 def styles():
 	"""Displays the styles landing page."""
 
-	search = request.args.get("search")
-	styles = "Select a category to display styles!"
+	# styles = "Select a category to display styles!"
+	
+		# return render_template('styles.html', styles=styles)
 
-	if search:
-		styles = Styles.query.filter(Styles.category==search).all()
-		return render_template('styles.html', styles=styles)
-
-	return render_template('styles.html', styles=styles)
+	 # return render_template('styles.html', styles=styles)
 
 	# styles = Styles.query.all()
-	# return render_template('styles.html', styles=styles)
+	return render_template('styles.html')
+
+@app.route('/styles.json')
+def display_styles():
+
+	display_styles = []
+	cat = request.args.get('cat')
+
+	if cat == "all":
+		styles = Styles.query.all()
+	else:
+		styles = Styles.query.filter(Styles.category==cat).all()
+
+	for style in styles:
+		display_styles.append(style.name)
+		# print display_styles
+	return jsonify(display_styles)
 
 @app.route('/style-display/<name>')
 def style_display(name):

@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h2>Styles!</h2>
 
-<form id="search">
+<form>
 	Search by Category:
-		<select name="Category">
+		<select name="Category" id="cat">
 			<option value="British Origin Ales">British Origin Ales</option>
 			<option value="Irish Origin Ales">Irish Origin Ales</option>
 			<option value="North American Origin Ales">North American Origin Ales</option>
@@ -21,18 +25,39 @@
 			<option value="Other Origin">Other Origin</option>
 			<option value="Malternative Beverages">Malternative Beverages</option>
 		</select>
-		<input type="submit" value="Search!">
+		<button id="search">Search!</button>
 </form>
 
-{% if styles %}
-	{% for style in styles %}
-		<li>
-			<a href="/style-display/{{ style.name }}">{{ style.name }}</a>
-		</li>
-	{% endfor %}
-{% endif %}
+<ul id="styles">
+</ul>
 
 <br>
 <a href="/">back</a>
+
+<script>
+	"use strict";
+
+	$( document ).ready(function() {
+	    $.get('/styles.json', {cat: "all" }, displayStyles)
+	});
+
+	var catSearch = document.getElementById("search");
+
+	catSearch.addEventListener("click", searchDisplay);
+
+	function searchDisplay(evt) {
+		evt.preventDefault();
+		$.get('/styles.json', {cat: $("#cat").val() }, displayStyles)
+	}
+
+	function displayStyles(result) {
+		$("#styles").empty()
+		for(var i = 0; i < result.length; i++){
+			var encoded = encodeURIComponent(result[i]);
+			console.log(encoded);
+			$("#styles").append("<li><a href=/style-display/" + encoded +">" + result[i] + "</a></li>");
+		}
+	}
+ </script>
 
 {% endblock %}
