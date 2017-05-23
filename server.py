@@ -30,8 +30,17 @@ def ingredients():
 def styles():
 	"""Displays the styles landing page."""
 
-	styles = Styles.query.all()
+	search = request.args.get("search")
+	styles = "Select a category to display styles!"
+
+	if search:
+		styles = Styles.query.filter(Styles.category==search).all()
+		return render_template('styles.html', styles=styles)
+
 	return render_template('styles.html', styles=styles)
+
+	# styles = Styles.query.all()
+	# return render_template('styles.html', styles=styles)
 
 @app.route('/style-display/<name>')
 def style_display(name):

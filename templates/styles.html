@@ -3,11 +3,34 @@
 
 <h2>Styles!</h2>
 
-{% for style in styles %}
-	<li>
-		<a href="/style-display/{{ style.name }}">{{ style.name }}</a>
-	</li>
-{% endfor %}
+<form id="search">
+	Search by Category:
+		<select name="Category">
+			<option value="British Origin Ales">British Origin Ales</option>
+			<option value="Irish Origin Ales">Irish Origin Ales</option>
+			<option value="North American Origin Ales">North American Origin Ales</option>
+			<option value="German Origin Ales">German Origin Ales</option>
+			<option value="Belgian And French Origin Ales">Belgian And French Origin Ales</option>
+			<option value="International Ale Styles">International Ale Styles</option>
+			<option value="European-germanic Lager">European-germanic Lager</option>
+			<option value="North American Lager">North American Lager</option>
+			<option value="Other Lager">Other Lager</option>
+			<option value="International Styles">International Styles</option>
+			<option value="Hybrid/mixed Beer">Hybrid/mixed Beer</option>
+			<option value="Mead, Cider, & Perry">Mead, Cider, & Perry</option>
+			<option value="Other Origin">Other Origin</option>
+			<option value="Malternative Beverages">Malternative Beverages</option>
+		</select>
+		<input type="submit" value="Search!">
+</form>
+
+{% if styles %}
+	{% for style in styles %}
+		<li>
+			<a href="/style-display/{{ style.name }}">{{ style.name }}</a>
+		</li>
+	{% endfor %}
+{% endif %}
 
 <br>
 <a href="/">back</a>
