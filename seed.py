@@ -55,12 +55,12 @@ def load_yeast():
 		row = row.rstrip()
 
 		try:
-			yeast_id, name, description, yeastType, fermentTempMin, fermentTempMax, alcoholToleranceMin, alcoholToleranceMax, yeastFormat = row.split("|")
+			yeast_id, name, description, yeast_type, ferment_temp_min, ferment_temp_max, alcohol_tolerance_min, alcohol_tolerance_max, yeast_format = row.split("|")
 
-			yeast = Yeast(yeast_id=yeast_id, name=name, description=description, yeastType=yeastFormat, 
-						fermentTempMin=fermentTempMin, fermentTempMax=fermentTempMax, 
-						alcoholToleranceMin=alcoholToleranceMin, 
-						alcoholToleranceMax=alcoholToleranceMax, yeastFormat=yeastFormat)
+			yeast = Yeast(yeast_id=yeast_id, name=name, description=description, yeast_type=yeast_type, 
+						ferment_temp_min=ferment_temp_min, ferment_temp_max=ferment_temp_max, 
+						alcohol_tolerance_min=alcohol_tolerance_min, 
+						alcohol_tolerance_max=alcohol_tolerance_max, yeast_format=yeast_format)
 
 		except ValueError:
 			import pdb; pdb.set_trace()
@@ -76,11 +76,11 @@ def load_hops():
 		row = row.rstrip()
 
 		try:
-			hops_id, name, description, alphaAcidMin, alphaAcidMax, betaAcidMin, betaAcidMax, country = row.split("|")
+			hops_id, name, description, alpha_acid_min, alpha_acid_max, beta_acid_min, beta_acid_max, country = row.split("|")
 
-			hops = Hops(hops_id=hops_id, name=name, description=description, alphaMin=alphaAcidMin, 
-					alphaMax=alphaAcidMax, betaMin=betaAcidMin, betaMax=betaAcidMax, 
-					originCountry=country)
+			hops = Hops(hops_id=hops_id, name=name, description=description, alpha_min=alpha_acid_min, 
+					alpha_max=alpha_acid_max, beta_min=beta_acid_min, beta_max=beta_acid_max, 
+					origin_country=country)
 
 		except ValueError:
 			print i
@@ -100,13 +100,13 @@ def load_fermentables():
 		row = row.rstrip()
 
 		try:
-			fermentables_id, name, description, srmId, moistureContent, diastaticPower, potential, protein, maxInBatch, requiresMashing, characteristics, country = row.split(" | ")
+			fermentables_id, name, description, srm_id, moisture_content, diastatic_power, potential, protein, max_in_batch, requires_mashing, characteristics, country = row.split(" | ")
 
 			fermentables = Fermentables(fermentables_id=fermentables_id, 
-				name=name, description=description, srmId=srmId, 
-				moistureContent=moistureContent, diastaticPower=diastaticPower,
-				potential=potential, protein=protein, maxInBatch=maxInBatch,
-				requiresMashing=requiresMashing, characteristics=characteristics,
+				name=name, description=description, srm_id=srm_id, 
+				moisture_content=moisture_content, diastatic_power=diastatic_power,
+				potential=potential, protein=protein, max_in_batch=max_in_batch,
+				requires_mashing=requires_mashing, characteristics=characteristics,
 				country=country)
 
 		except ValueError:
