@@ -160,9 +160,17 @@ def display_profile():
 	#if you are not signed in 
 	# return render_template('profile.html')
 
-	 # if session['username']:
-	projects = Project.query.all()
-	return render_template('profile.html', projects=projects)
+	name = session['username']
+	display = User.query.filter(User.username==name).all()
+
+	if not display:
+		flash('Please log in to create a new project')
+	elif display:
+		projects = Project.query.filter(Project.username==name).all()
+		return render_template('profile.html', projects=projects)
+	else:
+		flash('Please log in or create a new account to view projects.')
+		return render_template('profile.html')
 		
 
 @app.route('/project-display/<name>', methods=['GET'])
