@@ -28,12 +28,13 @@ def ingredients():
 
 @app.route('/styles')
 def styles():
-	"""Displays the styles landing page."""
+	"""Displays the all styles."""
 
 	return render_template('styles.html')
 
 @app.route('/styles.json')
 def display_styles():
+	"""Searches styles by category then displays the narrowed down data."""
 
 	display_styles = []
 	cat = request.args.get('cat')
@@ -87,6 +88,8 @@ def login_process():
 
 @app.route('/logout')
 def logout():
+	"""Logs the user out by deleting the session."""
+
 	del session['username']
 	flash('Logged out.')
 	print "Log out check", session.get('username')
@@ -132,6 +135,7 @@ def yeast_info():
 
 @app.route('/yeasts.json')
 def display_yeasts():
+	"""Searches yeasts by form you can by them in then displays the narrowed down data."""
 
 	display_yeasts = []
 	yf = request.args.get('yf')
@@ -161,6 +165,7 @@ def hops_info():
 
 @app.route('/hops.json')
 def display_hops():
+	"""Searches hops by country of origin then displays the narrowed down data."""
 
 	display_hops = []
 	coo = request.args.get('coo')
@@ -190,6 +195,7 @@ def fermentables_info():
 
 @app.route('/fermentables.json')
 def display_fermentables():
+	"""Searches fermentables by country of origin then displays the narrowed down data."""
 
 	display_fermentables = []
 	fcoo = request.args.get('fcoo')
@@ -232,7 +238,6 @@ def display_profile():
 		flash('Please log in or create a new account to view projects.')
 		return render_template('profile.html')
 		
-
 @app.route('/project-display/<name>', methods=['GET'])
 def display_project(name):
 	"""Display the info about a specific project"""
@@ -245,6 +250,22 @@ def display_new_project():
 	"""Displays the new project form."""
 	#make text box for notes bigger in the CSS file
 	return render_template('new-project-form.html')
+
+@app.route('/project.json')
+def edit_project():
+
+	display_project = []
+
+	name = request.args.get('name')
+
+	info = Project.query.filter_by(project_name=name).first()
+
+	display_project = [info.project_name, info.style, info.yeast, info.hops, info.hops2,
+						info.hops3, info.fermentables, info.fermentables2, 
+						info.fermentables, info.og, info.fg, info.abv, info.srm, 
+						info.notes]
+
+	return jsonify(display_project)
 
 @app.route('/new-project', methods=['POST'])
 def new_project_process():

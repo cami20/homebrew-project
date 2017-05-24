@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h1>{{ projects.project_name }}</h1>
 <br>
 style: {{ projects.style }}
@@ -31,5 +35,23 @@ notes: {{ projects.notes }}
 <br>
 
 <a href="/profile">back</a>
+<button data-name="{{ projects.project_name }}" id="edit">Edit your project</button>
+
+<script>
+	"use strict";
+
+	$('#edit').click(editProject);
+
+	function editProject(evt) {
+		evt.preventDefault();
+		$.get('/project.json', {name: $(this).data( "name" ) }, displayProject)
+	}
+
+	function displayProject(result) {
+		//this is where I will call the auto filled features.
+		console.log(result)
+	}
+ </script>
+
 
 {% endblock %}
