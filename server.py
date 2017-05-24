@@ -30,13 +30,6 @@ def ingredients():
 def styles():
 	"""Displays the styles landing page."""
 
-	# styles = "Select a category to display styles!"
-	
-		# return render_template('styles.html', styles=styles)
-
-	 # return render_template('styles.html', styles=styles)
-
-	# styles = Styles.query.all()
 	return render_template('styles.html')
 
 @app.route('/styles.json')
@@ -149,8 +142,23 @@ def yeast_display(name):
 def hops_info():
 	"""Displays info about hops."""
 
-	hops = Hops.query.all()
-	return render_template('hops.html', hops=hops)
+	return render_template('hops.html')
+
+@app.route('/hops.json')
+def display_hops():
+
+	display_hops = []
+	coo = request.args.get('coo')
+
+	if coo == "all":
+		hops = Hops.query.all()
+	else:
+		hops = Hops.query.filter(Hops.origin_country==coo).all()
+
+	for hop in hops:
+		display_hops.append(hop.name)
+		# print display_styles
+	return jsonify(display_hops)
 
 @app.route('/hops-display/<name>')
 def hops_display(name):

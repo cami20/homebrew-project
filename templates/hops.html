@@ -1,18 +1,59 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h2>Hops</h2>
 
+<form>
+	Search by Country of Origin:
+		<select name="origin" id="coo">
+			<option value="UNITED KINGDOM">United Kingdom</option>
+			<option value="UNITED STATES">United States</option>
+			<option value="GERMANY">Germany</option>
+			<option value="NEW ZEALAND">New Zealand</option>
+			<option value="POLAND">Poland</option>
+			<option value="FRANCE">France</option>
+			<option value="AUSTRALIA">Australia</option>
+			<option value="CZECH REPUBLIC">Czech Republic</option>
+			<option value="AUSTRIA">Austria</option>
+			<option value="N/A">Not Listed</option>
+		</select>
+		<button id="search">Search!</button>
+</form>
 
-{% for hop in hops %}
-	<li>
-		<a href="/hops-display/{{ hop.name }}">{{ hop.name }}</a>
-	</li>
-{% endfor %}
-
-
+<ul id="hops">
+</ul>
 
 <br>
 <a href="/ingredients">back</a>
+
+<script>
+	"use strict";
+
+	$( document ).ready(function() {
+	    $.get('/hops.json', {coo: "all" }, displayHops)
+	});
+
+	var cooSearch = document.getElementById("search");
+
+	cooSearch.addEventListener("click", searchDisplay);
+
+	function searchDisplay(evt) {
+		evt.preventDefault();
+		$.get('/hops.json', {coo: $("#coo").val() }, displayHops)
+	}
+
+	function displayHops(result) {
+		$("#hops").empty()
+		for(var i = 0; i < result.length; i++){
+			var encoded = encodeURIComponent(result[i]);
+			console.log(encoded);
+			$("#hops").append("<li><a href=/hops-display/" + encoded +">" + result[i] + "</a></li>");
+		}
+	}
+ </script>
 
 {% endblock %}
