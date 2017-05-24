@@ -1,17 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h2>Yeast</h2>
 
+<form>
+	Search by the form you can buy the yeast in:
+		<select name="yeastForm" id="yf">
+			<option value="liquid">liquid</option>
+			<option value="dry">dry</option>
+		</select>
+		<button id="search">Search!</button>
+</form>
 
-{% for yeast in yeasts %}
-	<li>
-		<a href="/yeast-display/{{ yeast.name }}">{{ yeast.name }}</a>
-	</li>
-{% endfor %}
-
+<ul id="yeasts">
+</ul>
 
 <br>
 <a href="/ingredients">back</a>
+
+<script>
+	"use strict";
+
+	$( document ).ready(function() {
+	    $.get('/yeasts.json', {yf: "all" }, displayYeasts)
+	});
+
+	var yfSearch = document.getElementById("search");
+
+	yfSearch.addEventListener("click", searchDisplay);
+
+	function searchDisplay(evt) {
+		evt.preventDefault();
+		$.get('/yeasts.json', {yf: $("#yf").val() }, displayYeasts)
+	}
+
+	function displayYeasts(result) {
+		$("#yeasts").empty()
+		for(var i = 0; i < result.length; i++){
+			var encoded = encodeURIComponent(result[i]);
+			console.log(encoded);
+			$("#yeasts").append("<li><a href=/yeast-display/" + encoded +">" + result[i] + "</a></li>");
+		}
+	}
+ </script>
 
 {% endblock %}

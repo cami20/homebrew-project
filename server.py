@@ -128,8 +128,23 @@ def new_account_process():
 def yeast_info():
 	"""Displays info about yeast."""
 
-	yeasts = Yeast.query.all()
-	return render_template('yest.html', yeasts=yeasts)
+	return render_template('yest.html')
+
+@app.route('/yeasts.json')
+def display_yeasts():
+
+	display_yeasts = []
+	yf = request.args.get('yf')
+
+	if yf == "all":
+		yeasts = Yeast.query.all()
+	else:
+		yeasts = Yeast.query.filter(Yeast.yeast_format==yf).all()
+
+	for yeast in yeasts:
+		display_yeasts.append(yeast.name)
+		# print display_styles
+	return jsonify(display_yeasts)
 
 @app.route('/yeast-display/<name>')
 def yeast_display(name):
