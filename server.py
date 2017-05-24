@@ -186,8 +186,23 @@ def hops_display(name):
 def fermentables_info():
 	"""Displays info about fermentables."""
 
-	fermentables = Fermentables.query.all()
-	return render_template('ferment.html', fermentables=fermentables)
+	return render_template('ferment.html')
+
+@app.route('/fermentables.json')
+def display_fermentables():
+
+	display_fermentables = []
+	fcoo = request.args.get('fcoo')
+
+	if fcoo == "all":
+		fermentables = Fermentables.query.all()
+	else:
+		fermentables = Fermentables.query.filter(Fermentables.country==fcoo).all()
+
+	for fermentable in fermentables:
+		display_fermentables.append(fermentable.name)
+		# print display_styles
+	return jsonify(display_fermentables)
 
 @app.route('/fermentable-display/<name>', methods=["GET"])
 def fermentable_display(name):

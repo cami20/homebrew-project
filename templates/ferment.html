@@ -1,19 +1,57 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h2>Fermentables</h2>
 
+<form>
+	Search by Country of Origin:
+		<select name="fermentOrigin" id="fcoo">
+			<option value="GERMANY">Germany</option>
+			<option value="UNITED KINGDOM">United Kingdom</option>
+			<option value="BELGIUM">Belgium</option>
+			<option value="CANADA">Canada</option>
+			<option value="n/a">Not Listed</option>
+		</select>
+		<button id="search">Search!</button>
+</form>
 
 </div>
 
 
-{% for ferment in fermentables %}
-	<li>
-		<a href="/fermentable-display/{{ ferment.name }}">{{ ferment.name }}</a>
-	</li>
-{% endfor %}
+<ul id="fermentables">
+</ul>
 
 <br>
 <a href="/ingredients">back</a>
+
+<script>
+	"use strict";
+
+	$( document ).ready(function() {
+	    $.get('/fermentables.json', {fcoo: "all" }, displayFermentables)
+	});
+
+	var fcooSearch = document.getElementById("search");
+
+	fcooSearch.addEventListener("click", searchDisplay);
+
+	function searchDisplay(evt) {
+		evt.preventDefault();
+		$.get('/fermentables.json', {fcoo: $("#fcoo").val() }, displayFermentables)
+	}
+
+	function displayFermentables(result) {
+		$("#fermentables").empty()
+		for(var i = 0; i < result.length; i++){
+			var encoded = encodeURIComponent(result[i]);
+			console.log(encoded);
+			$("#fermentables").append("<li><a href=/fermentable-display/" + encoded +">" + result[i] + "</a></li>");
+		}
+	}
+ </script>
 
 {% endblock %}
