@@ -296,13 +296,28 @@ def edit_project_process():
 	notes = request.form['notes']
 
 	#use the code below to add projects to the database.
-	update_project = Project(username=username, project_name=name, style=style, 
-						yeast=yeast,hops=hops, hops2=hops2, hops3=hops3, 
-						fermentables=fermentables,fermentables2=fermentables2, 
-						fermentables3=fermentables3,og=og, fg=fg, abv=abv, 
-						srm=srm, notes=notes)
+	# update_project = Project(username=username, project_name=name, style=style, 
+	# 					yeast=yeast,hops=hops, hops2=hops2, hops3=hops3, 
+	# 					fermentables=fermentables,fermentables2=fermentables2, 
+	# 					fermentables3=fermentables3,og=og, fg=fg, abv=abv, 
+	# 					srm=srm, notes=notes)
 
-	db.session.add(update_project)
+	# db.session.add(update_project)
+	# db.session.commit()
+
+	db.session.query(Project).filter_by(project_name=name).update({Project.style: style, 
+																   Project.yeast: yeast,
+																   Project.hops: hops,
+																   Project.hops2: hops2,
+																   Project.hops3: hops3,
+																   Project.fermentables: fermentables,
+																   Project.fermentables2: fermentables2,
+																   Project.fermentables3: fermentables3,
+																   Project.og: og, 
+																   Project.fg: fg,
+																   Project.abv: abv, 
+																   Project.srm: srm,
+																   Project.notes: notes})
 	db.session.commit()
 
 	flash("Project Updated!")
