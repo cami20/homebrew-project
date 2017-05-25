@@ -26,7 +26,7 @@
 	<div>
 		<label>
 			Yeast:
-			<input type="text" name="yeast" id="yeast" value"{{ projects.yeast }}" required>
+			<input type="text" name="yeast" id="yeast" value="{{ projects.yeast }}" required>
 		</label>
 	</div>
 
@@ -65,7 +65,7 @@
 	<div>
 		<label>
 			Please enter your ABV:
-			<input type="text" name="abv" id="abv" value"{{ projects.abv }}">
+			<input type="text" name="abv" id="abv" value="{{ projects.abv }}">
 		</label>
 	</div>
 
@@ -79,7 +79,7 @@
 	<div>
 		<label>
 			Please enter your project notes:<br>
-			<textarea name="notes" id="notes" value="{{ projects.notes }}" rows="10" cols="50"></textarea>
+			<textarea name="notes" id="notes" value="{{ projects.notes }}" rows="10" cols="50">{{ projects.notes }}</textarea>
 		</label>
 	</div>
 
