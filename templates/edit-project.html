@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<div>
+<h1>Edit your Project here:</h1>
+
+<form action="/edit-project" method="POST" id="editProject">
+	<div>
+		<label>
+			Project name:
+			<input type="text" name="project_name" id="name" value="{{ projects.project_name }}" required>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Style:
+			<input type="text" name="style" id="style" value="{{ projects.style }}">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Yeast:
+			<input type="text" name="yeast" id="yeast" value"{{ projects.yeast }}" required>
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Hops:
+			<input type="text" name="hops" id="hops" value="{{ projects.hops }}" required>
+			<input type="text" name="hops2"id="hops2" value="{{ projects.hops2 }}">
+			<input type="text" name="hops3"id="hops3" value="{{ projects.hops3 }}">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter the fermentables you used:
+			<input type="text" name="fermentables" id="fermentables" value="{{ projects.fermentables }}" required>
+			<input type="text" name="fermentables2" id="fermentables2" value="{{ projects.fermentables2 }}">
+			<input type="text" name="fermentables3" id="fermentables3" value="{{ projects.fermentables3 }}">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your Original Gravity:
+			<input type="text" name="og" id="og" value="{{ projects.og }}">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your Final Gravity:
+			<input type="text" name="fg" id="fg" value="{{ projects.fg }}">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your ABV:
+			<input type="text" name="abv" id="abv" value"{{ projects.abv }}">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your SRM:
+			<input type="text" name="srm" id="srm" value="{{ projects.srm }}">
+		</label>
+	</div>
+
+	<div>
+		<label>
+			Please enter your project notes:<br>
+			<textarea name="notes" id="notes" value="{{ projects.notes }}" rows="10" cols="50"></textarea>
+		</label>
+	</div>
+
+	<div>
+		<input type="submit">
+	</div>
+
+	<a href="/profile">Back</a>
+
+</form>
+
+</div>
+
+<script>
+	// "use strict";
+
+	// $('#edit').click(editProject);
+
+	// var frm = 'edit-project.html'
+
+	// function editProject(evt) {
+	// 	evt.preventDefault();
+	// 	$.get('/project.json', {name: $(this).data( "name" ) }, displayProject)
+	// }
+
+	// function displayProject(result) {
+	// 	console.log(result)
+	// 	$.each(result, function(key, value){
+	// 		var update = $('[name=' +key+']', frm);
+	// 		switch(update.prop("type"))
+	// 	});
+	// }
+ </script>
+
+{% endblock %}

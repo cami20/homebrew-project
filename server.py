@@ -260,12 +260,53 @@ def edit_project():
 
 	info = Project.query.filter_by(project_name=name).first()
 
-	display_project = [info.project_name, info.style, info.yeast, info.hops, info.hops2,
-						info.hops3, info.fermentables, info.fermentables2, 
-						info.fermentables, info.og, info.fg, info.abv, info.srm, 
-						info.notes]
+	display_project = {"name": info.project_name, "style": info.style, "yeast": info.yeast, 
+						"hops": info.hops, "hops2": info.hops2, "hops3": info.hops3, 
+						"fermentables": info.fermentables, "fermentables2": info.fermentables2, 
+						"fermentables3": info.fermentables3, "og": info.og, "fg": info.fg, 
+						"abv": info.abv, "srm": info.srm, "notes": info.notes}
 
 	return jsonify(display_project)
+
+@app.route('/edit-project/<name>', methods=['GET'])
+def display_edit_project(name):
+
+	projects = Project.query.filter_by(project_name=name).first()
+	return render_template("edit-project.html", projects=projects)
+
+@app.route('/edit-project', methods=['POST'])
+def edit_project_process():
+	"""Process of editing a project."""
+
+	# Get form variables
+	username = session['username']
+	name = request.form['project_name']
+	style = request.form['style']
+	yeast = request.form['yeast']
+	hops = request.form['hops']
+	hops2 = request.form['hops2']
+	hops3 = request.form['hops3']
+	fermentables = request.form['fermentables']
+	fermentables2 = request.form['fermentables2']
+	fermentables3 = request.form['fermentables3']
+	og = request.form['og']
+	fg = request.form['fg']
+	abv = request.form['abv']
+	srm = request.form['srm']
+	notes = request.form['notes']
+
+	#use the code below to add projects to the database.
+	update_project = Project(username=username, project_name=name, style=style, 
+						yeast=yeast,hops=hops, hops2=hops2, hops3=hops3, 
+						fermentables=fermentables,fermentables2=fermentables2, 
+						fermentables3=fermentables3,og=og, fg=fg, abv=abv, 
+						srm=srm, notes=notes)
+
+	db.session.add(update_project)
+	db.session.commit()
+
+	flash("Project Updated!")
+	return redirect('/profile')
 
 @app.route('/new-project', methods=['POST'])
 def new_project_process():

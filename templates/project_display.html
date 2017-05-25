@@ -35,22 +35,28 @@ notes: {{ projects.notes }}
 <br>
 
 <a href="/profile">back</a>
-<button data-name="{{ projects.project_name }}" id="edit">Edit your project</button>
+<a href="/edit-project">Edit your Project</a>
+<!-- <button data-name="{{ projects.project_name }}" id="edit">Edit your project</button> -->
 
-<script>
-	"use strict";
+ <script>
+// 	"use strict";
 
-	$('#edit').click(editProject);
+// 	$('#edit').click(editProject);
 
-	function editProject(evt) {
-		evt.preventDefault();
-		$.get('/project.json', {name: $(this).data( "name" ) }, displayProject)
-	}
+// 	var frm = 'edit-project.html'
 
-	function displayProject(result) {
-		//this is where I will call the auto filled features.
-		console.log(result)
-	}
+// 	function editProject(evt) {
+// 		evt.preventDefault();
+// 		$.get('/project.json', {name: $(this).data( "name" ) }, displayProject)
+// 	}
+
+	// function displayProject(result) {
+	// 	console.log(result)
+	// 	$.each(result, function(key, value){
+	// 		var update = $('[name=' +key+']', frm);
+	// 		switch(update.prop("type"))
+	// 	});
+	// }
  </script>
 
 
