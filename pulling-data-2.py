@@ -293,3 +293,15 @@
 
 # 	# # pprint(fermentables)
 
+
+#a way I found to save data between pages using JSON and JavaScript
+
+ # // var val = result;
+# 		// sessionStorage.setItem('val', JSON.stringify(val));
+# 		// sessionStorage.val = JSON.stringify(val);
+# 		// console.log(val);
+# 		// $.each(result, function(key, value){
+# 		// 	var update = $('[name=' +key+']', frm);
+# 		// 	switch(update.prop("type"))
+# 		// });
+

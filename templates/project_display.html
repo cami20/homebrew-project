@@ -35,28 +35,26 @@ notes: {{ projects.notes }}
 <br>
 
 <a href="/profile">back</a>
-<a href="/edit-project">Edit your Project</a>
-<!-- <button data-name="{{ projects.project_name }}" id="edit">Edit your project</button> -->
+<!-- <a href="/edit-project">Edit your Project</a> -->
+<button data-name="{{ projects.project_name }}" id="edit">Edit your project</button>
 
  <script>
-// 	"use strict";
+	"use strict";
 
-// 	$('#edit').click(editProject);
+	$('#edit').click(editProject);
 
-// 	var frm = 'edit-project.html'
+	// var val = sessionStorage.myValue
 
-// 	function editProject(evt) {
-// 		evt.preventDefault();
-// 		$.get('/project.json', {name: $(this).data( "name" ) }, displayProject)
-// 	}
+	function editProject(evt) {
+		evt.preventDefault();
+		$.get('/project.json', {name: $(this).data( "name" ) }, displayProject);
+	}
 
-	// function displayProject(result) {
-	// 	console.log(result)
-	// 	$.each(result, function(key, value){
-	// 		var update = $('[name=' +key+']', frm);
-	// 		switch(update.prop("type"))
-	// 	});
-	// }
+	function displayProject(result) {
+		console.log(result);
+		window.location.href = '/new-project'
+		
+	}
  </script>
 
 

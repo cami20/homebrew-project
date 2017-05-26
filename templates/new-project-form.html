@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h2>Please Create a new Project!</h2>
 
 
 <div>
 <h1>Create a new Project</h1>
-
+{{ session['display_project'] }}
 <form action="/new-project" method="POST" id="newProject">
 	<div>
 		<label>
@@ -91,5 +95,11 @@
 </form>
 
 </div>
+
+<script>
+	var data = JSON.parse(sessionStorage.('display_project'));
+
+	console.log(data)
+</script>
 
 {% endblock %}

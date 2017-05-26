@@ -265,13 +265,14 @@ def edit_project():
 						"fermentables": info.fermentables, "fermentables2": info.fermentables2, 
 						"fermentables3": info.fermentables3, "og": info.og, "fg": info.fg, 
 						"abv": info.abv, "srm": info.srm, "notes": info.notes}
+	session['display_project'] = display_project
 
-	return jsonify(display_project)
+	return "Done"
 
 @app.route('/edit-project/<name>', methods=['GET'])
 def display_edit_project(name):
 
-	projects = Project.query.filter_by(project_name=name).first()
+	# projects = Project.query.filter_by(project_name=name).first()
 	return render_template("edit-project.html", projects=projects)
 
 @app.route('/edit-project', methods=['POST'])
@@ -296,15 +297,6 @@ def edit_project_process():
 	notes = request.form['notes']
 
 	#use the code below to add projects to the database.
-	# update_project = Project(username=username, project_name=name, style=style, 
-	# 					yeast=yeast,hops=hops, hops2=hops2, hops3=hops3, 
-	# 					fermentables=fermentables,fermentables2=fermentables2, 
-	# 					fermentables3=fermentables3,og=og, fg=fg, abv=abv, 
-	# 					srm=srm, notes=notes)
-
-	# db.session.add(update_project)
-	# db.session.commit()
-
 	db.session.query(Project).filter_by(project_name=name).update({Project.style: style, 
 																   Project.yeast: yeast,
 																   Project.hops: hops,
@@ -356,6 +348,17 @@ def new_project_process():
 
 	flash("New Project Created")
 	return redirect('/profile')
+
+@app.route('/save-random.json')
+def save_random_beer():
+
+	# display_random = []
+
+	# name = 
+
+	# return jsonify(display_random)
+
+	pass
 
 @app.route('/random-beer')
 def random_beer():

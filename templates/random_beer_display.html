@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h2>Random Beer!</h2>
 
 <h2>display the random ingredients</h2>
@@ -35,6 +39,28 @@
 {% endif %}
 
 <a href="/">Back</a>
+<!-- <button id="save">Save these items!</button> -->
+
+<script>
+	// "use strict";
+
+	// $('#save').click(saveRandom);
+
+	// // var val = sessionStorage.myValue
+
+	// function saveRandom(evt) {
+	// 	evt.preventDefault();
+	// 	$.get('/save-random.json', {name: $(this).data( "name" ) }, displayRandom)
+	// }
+
+	// function displayRandom(result) {
+	// 	console.log(result)
+	// 	// $.each(result, function(key, value){
+	// 	// 	var update = $('[name=' +key+']', frm);
+	// 	// 	switch(update.prop("type"))
+	// 	// });
+	// }
+ </script>
 
 {% endblock %}
 

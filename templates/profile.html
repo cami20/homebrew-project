@@ -11,8 +11,9 @@
 
 {% for project in projects %}
 	<li>
-		<a href="/edit-project/{{ project.project_name  }}">{{ project.project_name  }}</a>
-	</li>
+		<a href="/project-display/{{ project.project_name  }}">{{ project.project_name  }}</a>
+		<<!-- a href="/edit-project/{{ project.project_name  }}">{{ project.project_name  }}</a>
+ -->	</li>
 {% endfor %}
 
 <a href="/new-project">Create a new project here</a>
