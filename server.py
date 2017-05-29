@@ -255,8 +255,6 @@ def display_new_project():
 @app.route('/project.json')
 def edit_project():
 
-	display_project = []
-
 	name = request.args.get('name')
 
 	info = Project.query.filter_by(project_name=name).first()
@@ -393,13 +391,10 @@ def new_project_process():
 @app.route('/save-random.json')
 def save_random_beer():
 
-	# display_random = []
+	name = request.args.get('name')
+	print name
 
-	# name = 
-
-	# return jsonify(display_random)
-
-	pass
+	return "done"
 
 @app.route('/random-beer')
 def random_beer():

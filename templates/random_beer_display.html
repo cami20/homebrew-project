@@ -39,27 +39,21 @@
 {% endif %}
 
 <a href="/">Back</a>
-<!-- <button id="save">Save these items!</button> -->
+<button data-name="{{ yeast.name }}" id="save">Save these items!</button>
 
 <script>
-	// "use strict";
+	"use strict";
 
-	// $('#save').click(saveRandom);
+	$('#save').click(saveRandom);
 
-	// // var val = sessionStorage.myValue
+	function saveRandom(evt) {
+		evt.preventDefault();
+		$.get('/save-random.json', {name: $(this).data( "name" )}, displayProject);
+	}
 
-	// function saveRandom(evt) {
-	// 	evt.preventDefault();
-	// 	$.get('/save-random.json', {name: $(this).data( "name" ) }, displayRandom)
-	// }
-
-	// function displayRandom(result) {
-	// 	console.log(result)
-	// 	// $.each(result, function(key, value){
-	// 	// 	var update = $('[name=' +key+']', frm);
-	// 	// 	switch(update.prop("type"))
-	// 	// });
-	// }
+	function displayProject(result) {
+		window.location.href = '/new-project'
+	}
  </script>
 
 {% endblock %}
