@@ -1,85 +1,80 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<head>
-	<script src="https://code.jquery.com/jquery.js"></script>
-</head>
-
 <div>
 <h1>Edit your Project here:</h1>
-{{ session['display_project'] }}
 <form action="/edit-project" method="POST" id="editProject">
 	<div>
 		<label>
-			Project name:
-			<input type="text" name="project_name" id="name" value="{{ projects.project_name }}" required>
+			Please enter your project name:
+			<input type="text" name="project_name" value="{{ name }}" required>
 		</label>
 	</div>
 
 	<div>
 		<label>
-			Style:
-			<input type="text" name="style" id="style" value="{{ projects.style }}">
+			Please enter the style you used:
+			<input type="text" name="style" value="{{ style }}">
 		</label>
 	</div>
 
 	<div>
 		<label>
-			Yeast:
-			<input type="text" name="yeast" id="yeast" value="{{ projects.yeast }}" required>
+			Please enter the yeast you used:
+			<input type="text" name="yeast" value="{{ yeast }}" required>
 		</label>
 	</div>
 
 	<div>
 		<label>
-			Hops:
-			<input type="text" name="hops" id="hops" value="{{ projects.hops }}" required>
-			<input type="text" name="hops2"id="hops2" value="{{ projects.hops2 }}">
-			<input type="text" name="hops3"id="hops3" value="{{ projects.hops3 }}">
+			Please enter the hops you used:
+			<input type="text" name="hops" value="{{ hops }}" required>
+			<input type="text" name="hops2" value="{{ hops2 }}">
+			<input type="text" name="hops3" value="{{ hops3 }}">
 		</label>
 	</div>
 
 	<div>
 		<label>
 			Please enter the fermentables you used:
-			<input type="text" name="fermentables" id="fermentables" value="{{ projects.fermentables }}" required>
-			<input type="text" name="fermentables2" id="fermentables2" value="{{ projects.fermentables2 }}">
-			<input type="text" name="fermentables3" id="fermentables3" value="{{ projects.fermentables3 }}">
+			<input type="text" name="fermentables" value="{{ fermentables }}" required>
+			<input type="text" name="fermentables2" value="{{ fermentables2 }}">
+			<input type="text" name="fermentables3" value="{{ fermentables3 }}">
 		</label>
 	</div>
 
 	<div>
 		<label>
 			Please enter your Original Gravity:
-			<input type="text" name="og" id="og" value="{{ projects.og }}">
+			<input type="text" name="og" value="{{ og }}">
 		</label>
 	</div>
 
 	<div>
 		<label>
 			Please enter your Final Gravity:
-			<input type="text" name="fg" id="fg" value="{{ projects.fg }}">
+			<input type="text" name="fg" value="{{ fg }}">
 		</label>
 	</div>
 
 	<div>
 		<label>
 			Please enter your ABV:
-			<input type="text" name="abv" id="abv" value="{{ projects.abv }}">
+			<input type="text" name="abv" value="{{ abv }}">
 		</label>
 	</div>
 
 	<div>
 		<label>
 			Please enter your SRM:
-			<input type="text" name="srm" id="srm" value="{{ projects.srm }}">
+			<input type="text" name="srm" value="{{ srm }}">
 		</label>
 	</div>
 
 	<div>
 		<label>
 			Please enter your project notes:<br>
-			<textarea name="notes" id="notes" value="{{ projects.notes }}" rows="10" cols="50">{{ projects.notes }}</textarea>
+			<textarea name="notes" rows="10" cols="50">{{ notes }}</textarea>
 		</label>
 	</div>
 
@@ -92,26 +87,5 @@
 </form>
 
 </div>
-
-<script>
-	// "use strict";
-
-	// $('#edit').click(editProject);
-
-	// var frm = 'edit-project.html'
-
-	// function editProject(evt) {
-	// 	evt.preventDefault();
-	// 	$.get('/project.json', {name: $(this).data( "name" ) }, displayProject)
-	// }
-
-	// function displayProject(result) {
-	// 	console.log(result)
-	// 	$.each(result, function(key, value){
-	// 		var update = $('[name=' +key+']', frm);
-	// 		switch(update.prop("type"))
-	// 	});
-	// }
- </script>
 
 {% endblock %}

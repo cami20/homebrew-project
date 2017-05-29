@@ -248,8 +248,46 @@ def display_project(name):
 @app.route('/new-project')
 def display_new_project():
 	"""Displays the new project form."""
+	project_display = session['display_project']
+	keys = project_display.keys()
+	keys = project_display.keys()
+	values = project_display.values()
+	counter = 0
+	for k in keys:
+		if k == 'style':
+			style = values[counter]
+		if k == 'name':
+			name =  values[counter]
+		if k == 'yeast':
+			yeast =  values[counter]
+		if k == 'hops':
+			hops =  values[counter]
+		if k == 'hops2':
+			hops2 =  values[counter]
+		if k == 'hops3':
+			hops3 =  values[counter]
+		if k == 'fermentables':
+			fermentables =  values[counter]
+		if k == 'fermentables2':
+			fermentables2 =  values[counter]
+		if k == 'fermentables3':
+			fermentables3 =  values[counter]
+		if k == 'og':
+			og =  values[counter]
+		if k == 'fg':
+			fg =  values[counter]
+		if k == 'abv':
+			abv =  values[counter]
+		if k == 'srm':
+			srm =  values[counter]
+		if k == 'notes':
+			notes =  values[counter]
+		counter += 1
+
 	#make text box for notes bigger in the CSS file
-	return render_template('new-project-form.html')
+	return render_template('new-project-form.html', style=style, name=name, yeast=yeast, hops=hops, hops2=hops2,
+							hops3=hops3, fermentables=fermentables, fermentables2=fermentables2,
+							fermentables3=fermentables3, og=og, fg=fg, abv=abv, srm=srm, notes=notes)
 
 @app.route('/project.json')
 def edit_project():
@@ -269,11 +307,50 @@ def edit_project():
 
 	return "Done"
 
-@app.route('/edit-project/<name>', methods=['GET'])
-def display_edit_project(name):
+@app.route('/edit-project', methods=['GET'])
+def display_edit_project():
 
-	# projects = Project.query.filter_by(project_name=name).first()
-	return render_template("edit-project.html", projects=projects)
+	project_display = session['display_project']
+	keys = project_display.keys()
+	keys = project_display.keys()
+	values = project_display.values()
+	counter = 0
+	for k in keys:
+		if k == 'style':
+			style = values[counter]
+		if k == 'name':
+			name =  values[counter]
+		if k == 'yeast':
+			yeast =  values[counter]
+		if k == 'hops':
+			hops =  values[counter]
+		if k == 'hops2':
+			hops2 =  values[counter]
+		if k == 'hops3':
+			hops3 =  values[counter]
+		if k == 'fermentables':
+			fermentables =  values[counter]
+		if k == 'fermentables2':
+			fermentables2 =  values[counter]
+		if k == 'fermentables3':
+			fermentables3 =  values[counter]
+		if k == 'og':
+			og =  values[counter]
+		if k == 'fg':
+			fg =  values[counter]
+		if k == 'abv':
+			abv =  values[counter]
+		if k == 'srm':
+			srm =  values[counter]
+		if k == 'notes':
+			notes =  values[counter]
+		counter += 1
+
+	#make text box for notes bigger in the CSS file
+	return render_template('edit-project.html', style=style, name=name, yeast=yeast, hops=hops, hops2=hops2,
+							hops3=hops3, fermentables=fermentables, fermentables2=fermentables2,
+							fermentables3=fermentables3, og=og, fg=fg, abv=abv, srm=srm, notes=notes)
+	#return render_template("edit-project.html", projects=projects)
 
 @app.route('/edit-project', methods=['POST'])
 def edit_project_process():
