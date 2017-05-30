@@ -249,8 +249,40 @@ def display_project(name):
 def display_new_project():
 	"""Displays the new project form."""
 
+	#code below currently will load the data from the randome beer game into the form
+	#will need to fix this so that if you dont have that data thane the form will open
+	#up in its empty format.
+
+	#side note will need to find a way to deal with null values
+
+	project_display = session['save_random']
+	keys = project_display.keys()
+	values = project_display.values()
+	counter = 0
+	for k in keys:
+		if k == 'yeast':
+			yeast =  values[counter]
+		if k == 'hops':
+			hops =  values[counter]
+		if k == 'hops2':
+			hops2 =  values[counter]
+		if k == 'hops3':
+			hops3 =  values[counter]
+		if k == 'ferment':
+			fermentables =  values[counter]
+		if k == 'ferment2':
+			fermentables2 =  values[counter]
+		if k == 'ferment3':
+			fermentables3 =  values[counter]
+		counter += 1
+
+	# #make text box for notes bigger in the CSS file
+	return render_template('new-project-form.html', yeast=yeast, hops=hops, hops2=hops2,
+							hops3=hops3, fermentables=fermentables, fermentables2=fermentables2,
+							fermentables3=fermentables3)
+
 	#make text box for notes bigger in the CSS file
-	return render_template('new-project-form.html')
+	# return render_template('new-project-form.html')
 
 @app.route('/project.json')
 def edit_project():
