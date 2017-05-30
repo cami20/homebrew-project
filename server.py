@@ -448,19 +448,23 @@ def random_beer():
 def display_random_beer():
 	"""Displays the random ingredients choosen."""
 
+	fake = Hops(name="None")
+
 	hops_random = random.randint(1, 83)
 	hops = Hops.query.filter_by(hops_id=hops_random).first()
 
 	hops_random2 = random.randint(0, 83)
 
 	if hops_random2 == 0:
-		hops2 = "None"
-	hops2 = Hops.query.filter_by(hops_id=hops_random2).first()
+		hops2 = fake
+	else:
+		hops2 = Hops.query.filter_by(hops_id=hops_random2).first()
 
 	hops_random3 = random.randint(0, 83)
 	if hops_random3 == 0:
-		hops3 = "None"
-	hops3 = Hops.query.filter_by(hops_id=hops_random3).first()
+		hops3 = fake
+	else:
+		hops3 = Hops.query.filter_by(hops_id=hops_random3).first()
 
 	yeast_random = random.randint(1, 132)
 	yeast = Yeast.query.filter_by(yeast_id=yeast_random).first()
@@ -470,13 +474,15 @@ def display_random_beer():
 
 	ferment_random2 = random.randint(0, 51)
 	if ferment_random2 == 0:
-		fermentables2 = "None"
-	fermentables2 = Fermentables.query.filter_by(fermentables_id=ferment_random2).first()
+		fermentables2 = fake
+	else:
+		fermentables2 = Fermentables.query.filter_by(fermentables_id=ferment_random2).first()
 
 	ferment_random3 = random.randint(0, 51)
-	if ferment_random2 == 0:
-		fermentables3 = "None"
-	fermentables3 = Fermentables.query.filter_by(fermentables_id=ferment_random3).first()
+	if ferment_random3 == 0:
+		fermentables3 = fake
+	else:
+		fermentables3 = Fermentables.query.filter_by(fermentables_id=ferment_random3).first()
 
 	return render_template('random_beer_display.html', hops=hops, hops2=hops2, 
 							hops3=hops3, yeast=yeast, fermentables=fermentables, 

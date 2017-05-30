@@ -12,31 +12,17 @@
 <h3>Yeast: {{ yeast.name }}</h3>
 
 <h3>Hops: {{ hops.name }}</h3>
-{% if hops2 == None %}
-	<h3>Hops2: None</h3>
-	{% else %}
-		<h3>Hops2: {{ hops2.name }}</h3>
-{% endif %}
 
-{% if hops3 == None %}
-	<h3>Hops3: None</h3>
-	{% else %}
-		<h3>Hops3: {{ hops3.name }}</h3>
-{% endif %}
+<h3>Hops2: {{ hops2.name }}</h3>
+
+<h3>Hops3: {{ hops3.name }}</h3>
 
 <h3>Fermentables: {{ fermentables.name }}</h3>
 
-{% if fermentables2 == None %}
-	<h3>Fermentables2: None</h3>
-	{% else %}
-		<h3>Fermentables2: {{ fermentables2.name }}</h3>
-{% endif %}
+<h3>Fermentables2: {{ fermentables2.name }}</h3>
 
-{% if fermentables3 == None %}
-	<h3>Fermentables3: None</h3>
-	{% else %}
-		<h3>Fermentables3: {{ fermentables3.name }}</h3>
-{% endif %}
+<h3>Fermentables3: {{ fermentables3.name }}</h3>
+
 
 <a href="/">Back</a>
 <button data-yeast="{{ yeast.name }}" data-hops="{{ hops.name }}" data-hopshops="{{ hops2.name }}" data-hopshopshops="{{ hops3.name }}" data-ferment="{{ fermentables.name }}" data-fermentable="{{ fermentables2.name }}" data-fermentables="{{ fermentables3.name }}" id="save">Save these items!</button>
