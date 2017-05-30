@@ -221,28 +221,22 @@ def fermentable_display(name):
 def display_profile():
 	"""Displays a users profile"""
 
-	#find a way to display empty profile if session is active
-	#or only display profile if you have a session active and hide profile
-	#if you are not signed in 
-	# return render_template('profile.html')
+	name = session.get('username')
 
-	name = session['username']
-	display = User.query.filter(User.username==name).all()
+	if name:
+		display = User.query.filter(User.username==name).all()
 
-	if not display:
-		flash('Please log in to create a new project')
+		projects = Project.query.filter(Project.username==name).all()
+		return render_template('profile.html', projects=projects)
+
+	else:
+		flash('Please log in or create a new account to view projects.')
+		return render_template('login.html')
 
 	# if name 
 	# do project query with username
 	# else - reroute to log in
 	# for later: do project query for public projects
-
-	elif display:
-		projects = Project.query.filter(Project.username==name).all()
-		return render_template('profile.html', projects=projects)
-	else:
-		flash('Please log in or create a new account to view projects.')
-		return render_template('profile.html')
 		
 @app.route('/project-display/<name>', methods=['GET'])
 def display_project(name):
@@ -255,13 +249,8 @@ def display_project(name):
 def display_new_project():
 	"""Displays the new project form."""
 
-	#code below currently will load the data from the randome beer game into the form
-	#will need to fix this so that if you dont have that data thane the form will open
-	#up in its empty format.
-
 	#side note will need to find a way to deal with null values
 
-	# if session == ['save_random']:
 	project_display = session.get('save_random')
 
 	if project_display:
@@ -284,17 +273,16 @@ def display_new_project():
 			if k == 'ferment3':
 				fermentables3 =  values[counter]
 			counter += 1
-		# delete session key
 
 		del session['save_random']
 		return render_template('new-project-form.html', yeast=yeast, hops=hops, hops2=hops2,
 							hops3=hops3, fermentables=fermentables, fermentables2=fermentables2,
 							fermentables3=fermentables3)
 
-	#make text box for notes bigger in the CSS file
 	else:
 		print project_display
-		return render_template('new-project-form.html')
+		return render_template('new-project-form.html', yeast="", hops="", hops2="",
+							hops3="", fermentables="", fermentables2="",fermentables3="")
 
 @app.route('/project.json')
 def edit_project():
