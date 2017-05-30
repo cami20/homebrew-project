@@ -32,14 +32,6 @@
 
 	$('#save').click(saveRandom);
 
-	// var arrayData = document.getElementById('save').getAttribute('data-name');
-	// var arr = arrayData.split(',');
-
-	// for (i = 0; i < arr.length; i++) {
-	// 	console.log(arr[i])
-	//}
-
-
 	function saveRandom(evt) {
 		evt.preventDefault();
 		$.get('/save-random.json', {yeast: $(this).data( "yeast" ),
@@ -51,7 +43,6 @@
 									fermentables: $(this).data( "fermentables" ),
 								   },
 			displayProject);
-		// $.get('/save-random.json', {hops: $(this).data( "hops" )}, displayProject);
 	}
 
 	function displayProject(result) {

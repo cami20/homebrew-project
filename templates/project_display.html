@@ -35,15 +35,12 @@ notes: {{ projects.notes }}
 <br>
 
 <a href="/profile">back</a>
-<!-- <a href="/edit-project">Edit your Project</a> -->
 <button data-name="{{ projects.project_name }}" id="edit">Edit your project</button>
 
  <script>
 	"use strict";
 
 	$('#edit').click(editProject);
-
-	// var val = sessionStorage.myValue
 
 	function editProject(evt) {
 		evt.preventDefault();
