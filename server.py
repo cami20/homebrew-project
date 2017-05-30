@@ -398,13 +398,11 @@ def save_random_beer():
 	ferment = request.args.get('ferment')
 	ferment2 = request.args.get('fermentable')
 	ferment3 = request.args.get('fermentables')
-	print yeast
-	print hops
-	print hops2
-	print hops3
-	print ferment
-	print ferment2
-	print ferment3
+	
+	save_random = {"yeast": yeast, "hops": hops, "hops2": hops2, "hops3": hops3, 
+					"ferment": ferment, "ferment2": ferment2, "ferment3": ferment3}
+
+	session['save_random'] = save_random
 
 	return "done"
 
