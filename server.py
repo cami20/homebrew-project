@@ -391,8 +391,20 @@ def new_project_process():
 @app.route('/save-random.json')
 def save_random_beer():
 
-	name = request.args.get('name')
-	print name
+	yeast = request.args.get('yeast')
+	hops = request.args.get('hops')
+	hops2 = request.args.get('hopshops')
+	hops3 = request.args.get('hopshopshops')
+	ferment = request.args.get('ferment')
+	ferment2 = request.args.get('fermentable')
+	ferment3 = request.args.get('fermentables')
+	print yeast
+	print hops
+	print hops2
+	print hops3
+	print ferment
+	print ferment2
+	print ferment3
 
 	return "done"
 

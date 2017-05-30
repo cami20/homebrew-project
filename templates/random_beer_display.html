@@ -39,20 +39,38 @@
 {% endif %}
 
 <a href="/">Back</a>
-<button data-name="{{ yeast.name }}" id="save">Save these items!</button>
+<button data-yeast="{{ yeast.name }}" data-hops="{{ hops.name }}" data-hopshops="{{ hops2.name }}" data-hopshopshops="{{ hops3.name }}" data-ferment="{{ fermentables.name }}" data-fermentable="{{ fermentables2.name }}" data-fermentables="{{ fermentables3.name }}" id="save">Save these items!</button>
 
 <script>
 	"use strict";
 
 	$('#save').click(saveRandom);
 
+	// var arrayData = document.getElementById('save').getAttribute('data-name');
+	// var arr = arrayData.split(',');
+
+	// for (i = 0; i < arr.length; i++) {
+	// 	console.log(arr[i])
+	//}
+
+
 	function saveRandom(evt) {
 		evt.preventDefault();
-		$.get('/save-random.json', {name: $(this).data( "name" )}, displayProject);
+		$.get('/save-random.json', {yeast: $(this).data( "yeast" ),
+									hops: $(this).data( "hops" ),
+									hopshops: $(this).data( "hopshops" ),
+									hopshopshops: $(this).data( "hopshopshops" ),
+									ferment: $(this).data( "ferment" ),
+									fermentable: $(this).data( "fermentable" ),
+									fermentables: $(this).data( "fermentables" ),
+								   },
+			displayProject);
+		// $.get('/save-random.json', {hops: $(this).data( "hops" )}, displayProject);
 	}
 
 	function displayProject(result) {
-		window.location.href = '/new-project'
+		// window.location.href = '/new-project'
+		console.log(result); 
 	}
  </script>
 
