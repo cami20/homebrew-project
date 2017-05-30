@@ -231,6 +231,12 @@ def display_profile():
 
 	if not display:
 		flash('Please log in to create a new project')
+
+	# if name 
+	# do project query with username
+	# else - reroute to log in
+	# for later: do project query for public projects
+
 	elif display:
 		projects = Project.query.filter(Project.username==name).all()
 		return render_template('profile.html', projects=projects)
@@ -255,34 +261,40 @@ def display_new_project():
 
 	#side note will need to find a way to deal with null values
 
-	project_display = session['save_random']
-	keys = project_display.keys()
-	values = project_display.values()
-	counter = 0
-	for k in keys:
-		if k == 'yeast':
-			yeast =  values[counter]
-		if k == 'hops':
-			hops =  values[counter]
-		if k == 'hops2':
-			hops2 =  values[counter]
-		if k == 'hops3':
-			hops3 =  values[counter]
-		if k == 'ferment':
-			fermentables =  values[counter]
-		if k == 'ferment2':
-			fermentables2 =  values[counter]
-		if k == 'ferment3':
-			fermentables3 =  values[counter]
-		counter += 1
+	# if session == ['save_random']:
+	project_display = session.get('save_random')
 
-	# #make text box for notes bigger in the CSS file
-	return render_template('new-project-form.html', yeast=yeast, hops=hops, hops2=hops2,
+	if project_display:
+		keys = project_display.keys()
+		values = project_display.values()
+		counter = 0
+		for k in keys:
+			if k == 'yeast':
+				yeast =  values[counter]
+			if k == 'hops':
+				hops =  values[counter]
+			if k == 'hops2':
+				hops2 =  values[counter]
+			if k == 'hops3':
+				hops3 =  values[counter]
+			if k == 'ferment':
+				fermentables =  values[counter]
+			if k == 'ferment2':
+				fermentables2 =  values[counter]
+			if k == 'ferment3':
+				fermentables3 =  values[counter]
+			counter += 1
+		# delete session key
+
+		del session['save_random']
+		return render_template('new-project-form.html', yeast=yeast, hops=hops, hops2=hops2,
 							hops3=hops3, fermentables=fermentables, fermentables2=fermentables2,
 							fermentables3=fermentables3)
 
 	#make text box for notes bigger in the CSS file
-	# return render_template('new-project-form.html')
+	else:
+		print project_display
+		return render_template('new-project-form.html')
 
 @app.route('/project.json')
 def edit_project():
@@ -340,6 +352,7 @@ def display_edit_project():
 		counter += 1
 
 	#make text box for notes bigger in the CSS file
+	del session['display_project']
 	return render_template('edit-project.html', style=style, name=name, yeast=yeast, hops=hops, hops2=hops2,
 							hops3=hops3, fermentables=fermentables, fermentables2=fermentables2,
 							fermentables3=fermentables3, og=og, fg=fg, abv=abv, srm=srm, notes=notes)
@@ -382,7 +395,6 @@ def edit_project_process():
 																   Project.notes: notes})
 	db.session.commit()
 
-	del session['display_project']
 	flash("Project Updated!")
 	return redirect('/profile')
 
@@ -417,7 +429,6 @@ def new_project_process():
 	db.session.add(new_project)
 	db.session.commit()
 
-	del session['save_random']
 	flash("New Project Created")
 	return redirect('/profile')
 
