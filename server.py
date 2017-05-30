@@ -417,6 +417,7 @@ def new_project_process():
 	db.session.add(new_project)
 	db.session.commit()
 
+	del session['save_random']
 	flash("New Project Created")
 	return redirect('/profile')
 
