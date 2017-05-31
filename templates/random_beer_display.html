@@ -25,12 +25,23 @@
 
 
 <a href="/">Back</a>
-<button data-yeast="{{ yeast.name }}" data-hops="{{ hops.name }}" data-hopshops="{{ hops2.name }}" data-hopshopshops="{{ hops3.name }}" data-ferment="{{ fermentables.name }}" data-fermentable="{{ fermentables2.name }}" data-fermentables="{{ fermentables3.name }}" id="save">Save these items!</button>
+{% if 'username' in session %}
+	<button data-yeast="{{ yeast.name }}" data-hops="{{ hops.name }}" data-hopshops="{{ hops2.name }}" data-hopshopshops="{{ hops3.name }}" data-ferment="{{ fermentables.name }}" data-fermentable="{{ fermentables2.name }}" data-fermentables="{{ fermentables3.name }}" id="save">Save these items!</button>
+{% else %}
+	<button id="notSave"> Save these items!</button>
+{% endif %}
+
+
 
 <script>
 	"use strict";
 
 	$('#save').click(saveRandom);
+	$('#notSave').click(redirectUser);
+
+	jQuery(window).load(function() {
+		sessionStorage.SetItem('status', "loggedIn")
+	});
 
 	function saveRandom(evt) {
 		evt.preventDefault();
@@ -48,14 +59,11 @@
 	function displayProject(result) {
 		console.log(result);
 		window.location.href = '/new-project'
-		
+	}
 
-		// if (result == "done") {
-		// 	window.location.href = '/new-project'
-		// 	console.log(result);
-		// } else:{
-		// 	window.location.href = '/login'
-		// }
+	function redirectUser(evt){
+		evt.preventDefault();
+		window.location.href = '/login'
 	}
  </script>
 

@@ -429,27 +429,21 @@ def save_random_beer():
 	Then loads that data into the session."""
 
 	name = session.get('username')
+
+	yeast = request.args.get('yeast')
+	hops = request.args.get('hops')
+	hops2 = request.args.get('hopshops')
+	hops3 = request.args.get('hopshopshops')
+	ferment = request.args.get('ferment')
+	ferment2 = request.args.get('fermentable')
+	ferment3 = request.args.get('fermentables')
 	
-	if name:
-		yeast = request.args.get('yeast')
-		hops = request.args.get('hops')
-		hops2 = request.args.get('hopshops')
-		hops3 = request.args.get('hopshopshops')
-		ferment = request.args.get('ferment')
-		ferment2 = request.args.get('fermentable')
-		ferment3 = request.args.get('fermentables')
-		
-		save_random = {"yeast": yeast, "hops": hops, "hops2": hops2, "hops3": hops3, 
-						"ferment": ferment, "ferment2": ferment2, "ferment3": ferment3}
+	save_random = {"yeast": yeast, "hops": hops, "hops2": hops2, "hops3": hops3, 
+					"ferment": ferment, "ferment2": ferment2, "ferment3": ferment3}
 
-		session['save_random'] = save_random
+	session['save_random'] = save_random
 
-		return "done"
-
-	else:
-		flash('Please log in or create a new account to create a new project.')
-		return "not done"
-		return render_template('login.html')
+	return "done"
 
 	
 
