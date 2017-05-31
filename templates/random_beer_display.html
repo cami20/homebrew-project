@@ -23,8 +23,6 @@
 
 <h3>Fermentables3: {{ fermentables3.name }}</h3>
 
-
-<a href="/">Back</a>
 {% if 'username' in session %}
 	<button data-yeast="{{ yeast.name }}" data-hops="{{ hops.name }}" data-hopshops="{{ hops2.name }}" data-hopshopshops="{{ hops3.name }}" data-ferment="{{ fermentables.name }}" data-fermentable="{{ fermentables2.name }}" data-fermentables="{{ fermentables3.name }}" id="save">Save these items!</button>
 {% else %}
