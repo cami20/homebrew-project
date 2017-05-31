@@ -40,6 +40,12 @@
         </div>
     </nav>
 
+    
+{% for message in get_flashed_messages() %}
+	<div class="alert alert-info" role="alert">
+		<li>{{ message }}</li>
+	</div>
+{% endfor %}
 
 {% block content %}
     Put your body here.
