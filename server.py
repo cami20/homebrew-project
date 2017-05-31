@@ -445,7 +445,6 @@ def save_random_beer():
 
 	return "done"
 
-	
 
 @app.route('/random-beer')
 def random_beer():
