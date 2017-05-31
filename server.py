@@ -46,7 +46,7 @@ def display_styles():
 
 	for style in styles:
 		display_styles.append(style.name)
-		# print display_styles
+
 	return jsonify(display_styles)
 
 @app.route('/style-display/<name>')
@@ -111,7 +111,6 @@ def new_account_process():
 	password = request.form["password"]
 
 	if User.query.filter((User.email==email) | (User.username==username)).first():
-		# print "check user in database", User.query.filter((User.email==email) | (User.username==username)).all()
 		flash("%s you already have an accout. Please sign in." % username)
 		return redirect("/login")
 
@@ -147,7 +146,7 @@ def display_yeasts():
 
 	for yeast in yeasts:
 		display_yeasts.append(yeast.name)
-		# print display_styles
+		
 	return jsonify(display_yeasts)
 
 @app.route('/yeast-display/<name>')
@@ -177,7 +176,7 @@ def display_hops():
 
 	for hop in hops:
 		display_hops.append(hop.name)
-		# print display_styles
+	
 	return jsonify(display_hops)
 
 @app.route('/hops-display/<name>')
@@ -207,7 +206,7 @@ def display_fermentables():
 
 	for fermentable in fermentables:
 		display_fermentables.append(fermentable.name)
-		# print display_styles
+
 	return jsonify(display_fermentables)
 
 @app.route('/fermentable-display/<name>', methods=["GET"])
@@ -247,9 +246,8 @@ def display_project(name):
 
 @app.route('/new-project')
 def display_new_project():
-	"""Displays the new project form."""
-
-	#side note will need to find a way to deal with null values
+	"""Displays the new project form. If the user wants to save the random beer data
+	to a new project, the form will auto fill with the that data."""
 
 	project_display = session.get('save_random')
 
@@ -287,6 +285,9 @@ def display_new_project():
 @app.route('/project.json')
 def edit_project():
 
+	"""Complies the data that the user will want to edit into a JSON dictionary.
+	Then loads that data into the session."""
+
 	name = request.args.get('name')
 
 	info = Project.query.filter_by(project_name=name).first()
@@ -302,6 +303,9 @@ def edit_project():
 
 @app.route('/edit-project', methods=['GET'])
 def display_edit_project():
+
+	"""Populates a form with the values of a project that the user wants to edit.
+	Then when the user clicks save the project will be updated inthe database."""
 
 	project_display = session['display_project']
 	keys = project_display.keys()
@@ -339,12 +343,10 @@ def display_edit_project():
 			notes =  values[counter]
 		counter += 1
 
-	#make text box for notes bigger in the CSS file
 	del session['display_project']
 	return render_template('edit-project.html', style=style, name=name, yeast=yeast, hops=hops, hops2=hops2,
 							hops3=hops3, fermentables=fermentables, fermentables2=fermentables2,
 							fermentables3=fermentables3, og=og, fg=fg, abv=abv, srm=srm, notes=notes)
-	#return render_template("edit-project.html", projects=projects)
 
 @app.route('/edit-project', methods=['POST'])
 def edit_project_process():
@@ -423,20 +425,33 @@ def new_project_process():
 @app.route('/save-random.json')
 def save_random_beer():
 
-	yeast = request.args.get('yeast')
-	hops = request.args.get('hops')
-	hops2 = request.args.get('hopshops')
-	hops3 = request.args.get('hopshopshops')
-	ferment = request.args.get('ferment')
-	ferment2 = request.args.get('fermentable')
-	ferment3 = request.args.get('fermentables')
+	"""Complies the data that the user will want to save into a JSON dictionary.
+	Then loads that data into the session."""
+
+	name = session.get('username')
 	
-	save_random = {"yeast": yeast, "hops": hops, "hops2": hops2, "hops3": hops3, 
-					"ferment": ferment, "ferment2": ferment2, "ferment3": ferment3}
+	if name:
+		yeast = request.args.get('yeast')
+		hops = request.args.get('hops')
+		hops2 = request.args.get('hopshops')
+		hops3 = request.args.get('hopshopshops')
+		ferment = request.args.get('ferment')
+		ferment2 = request.args.get('fermentable')
+		ferment3 = request.args.get('fermentables')
+		
+		save_random = {"yeast": yeast, "hops": hops, "hops2": hops2, "hops3": hops3, 
+						"ferment": ferment, "ferment2": ferment2, "ferment3": ferment3}
 
-	session['save_random'] = save_random
+		session['save_random'] = save_random
 
-	return "done"
+		return "done"
+
+	else:
+		flash('Please log in or create a new account to create a new project.')
+		return "not done"
+		return render_template('login.html')
+
+	
 
 @app.route('/random-beer')
 def random_beer():
@@ -446,6 +461,7 @@ def random_beer():
 
 @app.route('/random-beer-display')
 def display_random_beer():
+
 	"""Displays the random ingredients choosen."""
 
 	fake = Hops(name="None")
