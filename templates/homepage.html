@@ -4,11 +4,15 @@
 <h1> Welcome to my cool Home Brew project!</h1>
 <h1>Hoppy Home Brewer</h1>
 
-{% for message in get_flashed_messages() %}
-	<li>{{ message }}</li>
-{% endfor %}
 
-<a href="/ingredients">Ingredients</a>
+	{% for message in get_flashed_messages() %}
+		<div class="alert alert-info" role="alert">
+			<li>{{ message }}</li>
+		</div>
+	{% endfor %}
+
+
+<!-- <a href="/ingredients">Ingredients</a>
 <br>
 
 <a href="/styles">Styles</a>
@@ -18,7 +22,7 @@
 <br>
 
 <a href="/random-beer">Create a random beer</a>
-<br>
+<br> -->
 
 <a href="/login">login</a>
 <br>
