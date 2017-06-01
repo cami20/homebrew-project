@@ -1,54 +1,56 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="container-fluid">
+	<div class="col-xs-12 col-md-6 col-lg-6">
+		<section class="" id="splash">
+			<p><h1>{{ fermentables.name }}</h1><p>
+			<p>Description: {{ fermentables.description }}</p>
+		</section>
+	</div>
 
-<h1>{{ fermentables.name }}</h1>
-<br>
-Description: {{ fermentables.description }}
-<br>
+	<div class="col-xs-12 col-md-6 col-lg-6 col-lg-offset-6" id="tablerow" style="margin:0;">
 
-<div class="row" id="tablerow">
-
-	<section class="col-xs-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-sx-offset-1">
-		<table class="table table-hover table-striped">
-	        <tr>
-	            <th>SRM:</th>
-	            <th>{{ fermentables.srm_id }}</th>
-	        <tr>
-	            <td>Moisture Content:</td>
-	            <td>{{ fermentables.moisture_content }}</td>
-	        </tr>
-	        <tr>
-	            <td>Diastatic Powder:</td>
-	            <td>{{ fermentables.diastatic_power }}</td>
-	        </tr>
-	        <tr>
-	            <td>Potential Gravity:</td>
-	            <td>{{ fermentables.protein }}</td>
-	        </tr>
-	        <tr>
-	            <td>Protein:</td>
-	            <td>{{ fermentables.protein }}</td>
-	        </tr>
-	        <tr>
-	            <td>Max amount to have in Batch:</td>
-	            <td>{{ fermentables.max_in_batch }}</td>
-	        </tr>
-	        <tr>
-	            <td>Does it require mashing:</td>
-	            <td>{{ fermentables.requires_mashing }}</td>
-	        </tr>
-	        <tr>
-	            <td>Characteristics:</td>
-	            <td>{{ fermentables.characteristics }}</td>
-	        </tr>
-	        <tr>
-	            <td>Country of Origin:</td>
-	            <td>{{ fermentables.country }}</td>
-	        </tr>
-	    </table>
-	</section>
-
+		<section>
+			<table class="table table-hover table-striped">
+		        <tr>
+		            <th>SRM:</th>
+		            <th>{{ fermentables.srm_id }}</th>
+		        <tr>
+		            <td>Moisture Content:</td>
+		            <td>{{ fermentables.moisture_content }}</td>
+		        </tr>
+		        <tr>
+		            <td>Diastatic Powder:</td>
+		            <td>{{ fermentables.diastatic_power }}</td>
+		        </tr>
+		        <tr>
+		            <td>Potential Gravity:</td>
+		            <td>{{ fermentables.protein }}</td>
+		        </tr>
+		        <tr>
+		            <td>Protein:</td>
+		            <td>{{ fermentables.protein }}</td>
+		        </tr>
+		        <tr>
+		            <td>Max amount to have in Batch:</td>
+		            <td>{{ fermentables.max_in_batch }}</td>
+		        </tr>
+		        <tr>
+		            <td>Does it require mashing:</td>
+		            <td>{{ fermentables.requires_mashing }}</td>
+		        </tr>
+		        <tr>
+		            <td>Characteristics:</td>
+		            <td>{{ fermentables.characteristics }}</td>
+		        </tr>
+		        <tr>
+		            <td>Country of Origin:</td>
+		            <td>{{ fermentables.country }}</td>
+		        </tr>
+		    </table>
+		</section>
+	</div>
 </div> 
 
 
