@@ -6,23 +6,50 @@
 <br>
 Description: {{ fermentables.description }}
 <br>
-SRM: {{ fermentables.srm_id }}
-<br>
-Moisture Content: {{ fermentables.moisture_content }}
-<br>
-Diastatic Powder: {{ fermentables.diastatic_power }}
-<br>
-Potential Gravity: {{ fermentables.potential }}
-<br>
-Protein: {{ fermentables.protein }}
-<br>
-Max amount to have in Batch: {{ fermentables.max_in_batch }}
-<br>
-Does it require mashing: {{ fermentables.requires_mashing }}
-<br>
-Characteristics: {{ fermentables.characteristics }}
-<br>
-Country of Origin: {{ fermentables.country }}
+
+<div class="row" id="tablerow">
+
+	<section class="col-xs-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-sx-offset-1">
+		<table class="table table-hover table-striped">
+	        <tr>
+	            <th>SRM:</th>
+	            <th>{{ fermentables.srm_id }}</th>
+	        <tr>
+	            <td>Moisture Content:</td>
+	            <td>{{ fermentables.moisture_content }}</td>
+	        </tr>
+	        <tr>
+	            <td>Diastatic Powder:</td>
+	            <td>{{ fermentables.diastatic_power }}</td>
+	        </tr>
+	        <tr>
+	            <td>Potential Gravity:</td>
+	            <td>{{ fermentables.protein }}</td>
+	        </tr>
+	        <tr>
+	            <td>Protein:</td>
+	            <td>{{ fermentables.protein }}</td>
+	        </tr>
+	        <tr>
+	            <td>Max amount to have in Batch:</td>
+	            <td>{{ fermentables.max_in_batch }}</td>
+	        </tr>
+	        <tr>
+	            <td>Does it require mashing:</td>
+	            <td>{{ fermentables.requires_mashing }}</td>
+	        </tr>
+	        <tr>
+	            <td>Characteristics:</td>
+	            <td>{{ fermentables.characteristics }}</td>
+	        </tr>
+	        <tr>
+	            <td>Country of Origin:</td>
+	            <td>{{ fermentables.country }}</td>
+	        </tr>
+	    </table>
+	</section>
+
+</div> 
 
 
 {% endblock %}

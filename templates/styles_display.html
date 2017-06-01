@@ -5,17 +5,37 @@
 <br>
 Description: {{ styles.description }}
 <br>
-ABV Range: {{ styles.abvMin }} - {{ styles.abvMax }}
-<br>
-IBU Range: {{ styles.ibuMin }} - {{ styles.ibuMax }}
-<br>
-OG Min: {{ styles.ogMin }}
-<br>
-FG Range: {{ styles.fgMin }} - {{ styles.fgMax }}
-<br>
-SRM Range: {{ styles.srmMin }} - {{ styles.srmMax }}
-<br>
-Category: {{ styles.category }}
-<br>
+
+<div class="row" id="tablerow">
+
+	<section class="col-xs-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-sx-offset-1">
+		<table class="table table-hover table-striped">
+	        <tr>
+	            <th>ABV Range:</th>
+	            <th>{{ styles.abvMin }} - {{ styles.abvMax }}</th>
+	        <tr>
+	            <td>IBU Range:</td>
+	            <td>{{ styles.ibuMin }} - {{ styles.ibuMax }}</td>
+	        </tr>
+	        <tr>
+	            <td>OG Min:</td>
+	            <td>{{ styles.ogMin }}</td>
+	        </tr>
+	        <tr>
+	            <td>FG Range:</td>
+	            <td>{{ styles.fgMin }} - {{ styles.fgMax }}</td>
+	        </tr>
+	        <tr>
+	            <td>SRM Range:</td>
+	            <td>{{ styles.srmMin }} - {{ styles.srmMax }}</td>
+	        </tr>
+	        <tr>
+	            <td>Category:</td>
+	            <td>{{ styles.category }}</td>
+	        </tr>
+	    </table>
+	</section>
+
+</div> 
 
 {% endblock %}

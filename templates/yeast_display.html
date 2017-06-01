@@ -5,13 +5,29 @@
 <br>
 Description: {{ yeast.description }}
 <br>
-Type: {{ yeast.yeast_type }}
-<br>
-temperature Range: {{ yeast.ferment_temp_min }} - {{ yeast.ferment_temp_max }}
-<br>
-Alcohol Range: {{ yeast.alcohol_tolerance_min }} - {{ yeast.alcohol_tolerance_max }}
-<br>
-Yeast Format: {{ yeast.yeast_format }}
 
+<div class="row" id="tablerow">
+
+	<section class="col-xs-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-sx-offset-1">
+		<table class="table table-hover table-striped">
+	        <tr>
+	            <th>Type:</th>
+	            <th>{{ yeast.yeast_type }}</th>
+	        <tr>
+	            <td>Temperature Range:</td>
+	            <td>{{ yeast.ferment_temp_min }} - {{ yeast.ferment_temp_max }}</td>
+	        </tr>
+	        <tr>
+	            <td>Alcohol Range:</td>
+	            <td>{{ yeast.alcohol_tolerance_min }} - {{ yeast.alcohol_tolerance_max }}</td>
+	        </tr>
+	        <tr>
+	            <td>Yeast Format:</td>
+	            <td>{{ yeast.yeast_format }}</td>
+	        </tr>
+	    </table>
+	</section>
+
+</div> 
 
 {% endblock %}
