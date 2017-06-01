@@ -31,7 +31,20 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/styles">Styles</a></li>
-                    <li><a href="/ingredients">Ingredients</a></li>
+                    <!-- <li><a href="/ingredients">Ingredients</a></li> -->
+                    <li class="dropdown">
+                        <a href="/ingredients"
+                           class="dropdown-toggle"
+                           data-toggle="dropdown"
+                           role="button"
+                           aria-expanded="false">
+                            Ingredients <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="/fermentables">Fermentables</a></li>
+                            <li><a href="/hops">Hops</a></li>
+                            <li><a href="yeast">Yeast</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/profile">Profile</a></li>
                     <li><a href="/random-beer">Random Beer</a></li>
                     <li><a href="/login">Login</a></li>

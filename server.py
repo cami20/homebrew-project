@@ -20,11 +20,13 @@ def homepage():
 
 	return render_template('homepage.html')
 
-@app.route('/ingredients')
-def ingredients():
-	"""Displays the ingredients landing page"""
 
-	return render_template('ingredients.html')
+# with the implamentation of the nav bar don't need this route for now
+# @app.route('/ingredients')
+# def ingredients():
+# 	"""Displays the ingredients landing page"""
+
+# 	return render_template('ingredients.html')
 
 @app.route('/styles')
 def styles():
@@ -444,7 +446,6 @@ def save_random_beer():
 	session['save_random'] = save_random
 
 	return "done"
-
 
 @app.route('/random-beer')
 def random_beer():
