@@ -2,6 +2,10 @@
 	background-color: #88E806;
 }
 
+.navbar-nav .dropdown a{
+	background-color: #88E806;
+}
+
 .navbar a{
 	color: white !important;
 	/*color: #e1c336;*/
@@ -10,4 +14,10 @@
 .navbar-nav a{
 	color: white !important;
 	/*color: #e1c336;*/
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th{
+	background-color: #f0efb5;
+	/*background-color: #e9d76c;*/
 }
