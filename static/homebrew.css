@@ -10,7 +10,7 @@ body:before {
     background-size: cover;
     z-index: -1;
     height: 20%; width: 20%;
-    opacity: 0.2;
+    opacity: 0.4;
 
     transform: scale(5);
     transform-origin: top left;
@@ -52,5 +52,5 @@ h2{
 }
 
 a{
-	color: #88E806;
+	color: #8f3f1c;
 }
