@@ -1,5 +1,26 @@
+body {
+    position: absolute;
+    top: 0; bottom: 0; left: 0; right: 0;
+    height: 100%;
+}
+body:before {
+    content: "";
+    position: absolute;
+    background: url(la-fo-beerguide-studio-photos-la0029319980-20150610.jpg);
+    background-size: cover;
+    z-index: -1; /* Keep the background behind the content */
+    height: 20%; width: 20%; /* Using Glen Maddern's trick /via @mente */
+
+    /* don't forget to use the prefixes you need */
+    transform: scale(5);
+    transform-origin: top left;
+    filter: blur(2px);
+}
+
 .navbar{
 	background-color: #88E806;
+	border-color: #f0efb5;
+	border-width: 2px;
 }
 
 .navbar-nav .dropdown a{
@@ -20,4 +41,8 @@
 .table-striped>tbody>tr:nth-child(odd)>th{
 	background-color: #f0efb5;
 	/*background-color: #e9d76c;*/
+}
+
+h1{
+	color: #8f3f1c !important;
 }
