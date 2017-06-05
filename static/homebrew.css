@@ -1,0 +1,13 @@
+.navbar{
+	background-color: #88E806;
+}
+
+.navbar a{
+	color: white !important;
+	/*color: #e1c336;*/
+}
+
+.navbar-nav a{
+	color: white !important;
+	/*color: #e1c336;*/
+}
