@@ -43,9 +43,9 @@ body:before {
 }
 
 .image{
-	margin: 10px;
-	height: 300px;
-	width: 80%;
+	margin: 30px;
+	height: 400px;
+	width: 90%;
 }
 
 .image img{
@@ -68,10 +68,16 @@ a{
 	color: #8f3f1c;
 }
 
+p{
+	margin: 10px;
+	color: #8f3f1c;
+}
+
 button{
 	background-color: #f0efb5;
 	border-color: #88E806;
 	border-radius: 20px;
+	margin: 10px;
 }
 
 #submit{
