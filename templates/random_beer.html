@@ -1,12 +1,27 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
 <h2>Random Beer!</h2>
 
 <h1><p>Do you need some inspiration for your next project?</p>
 <p> We will help you jump start your brain!</p></h1>
 <br>
 
-<a href="/random-beer-display">Submit!</a>
+<button id="random" href="/random-beer-display">Let's See What Happens!</button>
+
+<script>
+	"use strict";
+
+	$('#random').click(newRandom);
+
+	function newRandom() {
+		window.location.href = '/random-beer-display'
+	}
+
+</script>
 
 {% endblock %}

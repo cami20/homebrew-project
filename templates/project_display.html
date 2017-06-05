@@ -5,34 +5,72 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
-<h1>{{ projects.project_name }}</h1>
-<br>
-style: {{ projects.style }}
-<br>
-yeast: {{ projects.yeast }}
-<br>
-hops: {{ projects.hops }}
-<br>
-hops2: {{ projects.hops2 }}
-<br>
-hops3: {{ projects.hops3 }}
-<br>
-fermentables: {{ projects.fermentables }}
-<br>
-fermentables2: {{ projects.fermentables2 }}
-<br>
-fermentables3: {{ projects.fermentables3 }}
-<br>
-Origional Gravity: {{ projects.og }}
-<br>
-Final Gravity: {{ projects.fg }}
-<br>
-ABV: {{ projects.abv }}%
-<br>
-SRM: {{ projects.srm }}
-<br>
-notes: {{ projects.notes }}
-<br>
+<div class="container-fluid">
+	<div class="">
+		<section class="" id="splash">
+			<p><h1>{{ projects.project_name }}</h1><p>
+		</section>
+	</div>
+
+	<div class="" id="tablerow" style="margin:0;">
+
+		<section>
+			<table class="table table-hover table-striped">
+		        <tr>
+		            <th>Style:</th>
+		            <th>{{ projects.style }}</th>
+		        <tr>
+		            <td>Yeast:</td>
+		            <td>{{ projects.yeast }}</td>
+		        </tr>
+		        <tr>
+		            <td>Hops:</td>
+		            <td>{{ projects.hops }}</td>
+		        </tr>
+		        <tr>
+		            <td>Hops2:</td>
+		            <td>{{ projects.hops2 }}</td>
+		        </tr>
+		        <tr>
+		            <td>Hops3:</td>
+		            <td>{{ projects.hops3 }}</td>
+		        </tr>
+		        <tr>
+		            <td>Fermentables:</td>
+		            <td>{{ projects.fermentables }}</td>
+		        </tr>
+		        <tr>
+		            <td>Fermentables2:</td>
+		            <td>{{ projects.fermentables2 }}</td>
+		        </tr>
+		        <tr>
+		            <td>Fermentables3:</td>
+		            <td>{{ projects.fermentables3 }}</td>
+		        </tr>
+		        <tr>
+		            <td>Origional Gravity:</td>
+		            <td>{{ projects.og }}</td>
+		        </tr>
+		         <tr>
+		            <td>Final Gravity:</td>
+		            <td>{{ projects.fg }}</td>
+		        </tr>
+		        <tr>
+		            <td>ABV:</td>
+		            <td>{{ projects.abv }}</td>
+		        </tr>
+		        <tr>
+		            <td>SRM:</td>
+		            <td>{{ projects.srm }}</td>
+		        </tr>
+		        <tr>
+		            <td>Notes:</td>
+		            <td>{{ projects.notes }}</td>
+		        </tr>
+		    </table>
+		</section>
+	</div>
+</div> 
 
 <a href="/profile">back</a>
 <button data-name="{{ projects.project_name }}" id="edit">Edit your project</button>

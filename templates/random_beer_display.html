@@ -5,21 +5,48 @@
 	<script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
-<h2>Random Beer!</h2>
+<div class="container-fluid">
+	<div class="">
+		<section class="" id="splash">
+			<p><h1>Random Beer!</h1><p>
+		</section>
+	</div>
 
-<h3>Yeast: {{ yeast.name }}</h3>
+	<div class="" id="tablerow" style="margin:0;">
 
-<h3>Hops: {{ hops.name }}</h3>
-
-<h3>Hops2: {{ hops2.name }}</h3>
-
-<h3>Hops3: {{ hops3.name }}</h3>
-
-<h3>Fermentables: {{ fermentables.name }}</h3>
-
-<h3>Fermentables2: {{ fermentables2.name }}</h3>
-
-<h3>Fermentables3: {{ fermentables3.name }}</h3>
+		<section>
+			<table class="table table-hover table-striped">
+		        <tr>
+		            <th>Yeast:</th>
+		            <th>{{ yeast.name }}</th>
+		        <tr>
+		            <td>Hops:</td>
+		            <td>{{ hops.name }}</td>
+		        </tr>
+		        <tr>
+		            <td>Hops2:</td>
+		            <td>{{ hops2.name }}</td>
+		        </tr>
+		        <tr>
+		            <td>Hops3:</td>
+		            <td>{{ hops3.name }}</td>
+		        </tr>
+		        <tr>
+		            <td>Fermentables:</td>
+		            <td>{{ fermentables.name }}</td>
+		        </tr>
+		        <tr>
+		            <td>Fermentables2:</td>
+		            <td>{{ fermentables2.name }}</td>
+		        </tr>
+		        <tr>
+		            <td>Fermentables3:</td>
+		            <td>{{ fermentables3.name }}</td>
+		        </tr>
+		    </table>
+		</section>
+	</div>
+</div> 
 
 {% if 'username' in session %}
 	<button data-yeast="{{ yeast.name }}" data-hops="{{ hops.name }}" data-hopshops="{{ hops2.name }}" data-hopshopshops="{{ hops3.name }}" data-ferment="{{ fermentables.name }}" data-fermentable="{{ fermentables2.name }}" data-fermentables="{{ fermentables3.name }}" id="save">Save these items!</button>

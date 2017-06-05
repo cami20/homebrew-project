@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
+<head>
+	<script src="https://code.jquery.com/jquery.js"></script>
+</head>
 
 <h1> This is where you can look at projects that you have created or create new projects.</h1>
 
@@ -13,6 +15,16 @@
 	</li>
 {% endfor %}
 
-<a href="/new-project">Create a new project here</a>
+<button id="new" href="/new-project">Create a new project here</button>
+
+ <script>
+	"use strict";
+
+	$('#new').click(newProject);
+
+	function newProject(result) {
+		window.location.href = '/new-project'	
+	}
+ </script>
 
 {% endblock %}
