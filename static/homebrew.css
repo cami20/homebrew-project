@@ -6,15 +6,15 @@ body {
 body:before {
     content: "";
     position: absolute;
-    background: url(la-fo-beerguide-studio-photos-la0029319980-20150610.jpg);
+    background: url(2d0652e5f82da5437b2aaab5b054c5e1.jpg);
     background-size: cover;
-    z-index: -1; /* Keep the background behind the content */
-    height: 20%; width: 20%; /* Using Glen Maddern's trick /via @mente */
+    z-index: -1;
+    height: 20%; width: 20%;
+    opacity: 0.2;
 
-    /* don't forget to use the prefixes you need */
     transform: scale(5);
     transform-origin: top left;
-    filter: blur(2px);
+    filter: blur(1px);
 }
 
 .navbar{
@@ -45,4 +45,12 @@ body:before {
 
 h1{
 	color: #8f3f1c !important;
+}
+
+h2{
+	color: #8f3f1c !important;
+}
+
+a{
+	color: #88E806;
 }
