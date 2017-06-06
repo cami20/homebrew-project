@@ -15,7 +15,12 @@
 
 <button id="new" href="/new-project">Create a new project here</button>
 
- <script>
+<div class="pic-footer">
+	<img src="/static/beer-recipe-kits.jpg">
+</div>
+
+
+<script>
 	"use strict";
 
 	$('#new').click(newProject);
@@ -23,6 +28,6 @@
 	function newProject(result) {
 		window.location.href = '/new-project'	
 	}
- </script>
+</script>
 
 {% endblock %}

@@ -103,6 +103,19 @@ p{
 	opacity: 0.8;
 }
 
+.pic-footer{
+	height: 25px;
+	width: 100%;
+	position: absolute;
+	bottom: 5;
+}
+
+.pic-footer img{
+	width: 100%;
+	height: auto;
+	opacity: 0.8;
+}
+
 button{
 	background-color: #f0efb5;
 	border-color: #88E806;
