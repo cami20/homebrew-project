@@ -46,6 +46,9 @@ body:before {
 	margin: 30px;
 	height: 400px;
 	width: 90%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .image img{
@@ -71,6 +74,19 @@ a{
 p{
 	margin: 10px;
 	color: #8f3f1c;
+}
+
+.image{
+	height: 400px;
+	width: 90%;
+	display: block;
+	margin-right: auto;
+	margin-left: auto;	
+}
+
+.image img{
+	width: 100%;
+	height: auto;
 }
 
 button{
