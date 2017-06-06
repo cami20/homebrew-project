@@ -22,6 +22,7 @@ body:before {
 	background-color: #88E806;
 	border-color: #f0efb5;
 	border-width: 2px;
+	font-size: 20px;
 }
 
 .navbar-nav .dropdown a{
@@ -30,7 +31,7 @@ body:before {
 
 .navbar a{
 	color: white !important;
-	text-shadow: -1px 0 #8f3f1c, 0 1px #8f3f1c, 1px 0 #8f3f1c, 0 -1px #8f3f1c;
+	text-shadow: -1px 0 gray, 0 1px gray, 1px 0 gray, 0 -1px gray;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td,
@@ -79,6 +80,7 @@ a{
 	margin: 10px;
 	color: #8f3f1c;
 	font-weight: 700;
+	font-size: 16px;
 }
 
 p{
