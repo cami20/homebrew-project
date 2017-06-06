@@ -39,6 +39,10 @@ body:before {
 	border-color: #f0efb5;
 }
 
+#tablerow{
+	font-weight: 700;
+}
+
 .image{
 	margin: 30px;
 	height: 400px;
@@ -55,6 +59,10 @@ body:before {
 
 .form{
 	margin: 10px;
+}
+
+.description{
+	font-size: 17px;
 }
 
 h1{
@@ -75,6 +83,7 @@ a{
 
 p{
 	margin: 10px;
+	font-weight: 700;
 	color: #8f3f1c;
 }
 
