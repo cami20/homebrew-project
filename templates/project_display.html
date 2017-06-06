@@ -75,7 +75,11 @@
 <a href="/profile">back</a>
 <button data-name="{{ projects.project_name }}" id="edit">Edit your project</button>
 
- <script>
+<div class="pic-footer">
+	<img src="/static/beer-recipe-kits.jpg">
+</div>
+
+<script>
 	"use strict";
 
 	$('#edit').click(editProject);
@@ -88,7 +92,7 @@
 	function displayProject(result) {
 		window.location.href = '/edit-project'	
 	}
- </script>
+</script>
 
 
 {% endblock %}

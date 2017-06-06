@@ -30,10 +30,7 @@ body:before {
 
 .navbar a{
 	color: white !important;
-}
-
-.navbar-nav a{
-	color: white !important;
+	text-shadow: -1px 0 #8f3f1c, 0 1px #8f3f1c, 1px 0 #8f3f1c, 0 -1px #8f3f1c;
 }
 
 .table-striped>tbody>tr:nth-child(odd)>td,
@@ -54,6 +51,10 @@ body:before {
 .image img{
 	width: 100%;
 	height: auto;
+}
+
+.form{
+	margin: 10px;
 }
 
 h1{
