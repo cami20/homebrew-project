@@ -69,6 +69,7 @@ h2{
 a{
 	margin: 10px;
 	color: #8f3f1c;
+	font-weight: 700;
 }
 
 p{
@@ -87,6 +88,19 @@ p{
 .image img{
 	width: 100%;
 	height: auto;
+}
+
+.picture{
+	height: 25px;
+	width: 50%;
+	position: fixed;
+	right: 10px;
+}
+
+.picture img{
+	width: 100%;
+	height: auto;
+	opacity: 0.8;
 }
 
 button{
