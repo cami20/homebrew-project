@@ -40,25 +40,25 @@ Register or login to create new projects, view projects, and edit projects.
 To run this app on your local computer:
 
 Clone repository:
-	$ git clone https://github.com/cami20/homebrew-project.git
+		$ git clone https://github.com/cami20/homebrew-project.git
 
 Create a virtual environment:
-	$ virtualenv env
+		$ virtualenv env
 
 Activate the virtual environment:
-	$ source env/bin/activate
+		$ source env/bin/activate
 
 Install dependencies:
-	$ pip install -r requirements.txt
+		$ pip install -r requirements.txt
 
 Create database 'homebrew':
-	$ createdb homebrew
+		$ createdb homebrew
 
 Create your database tables and seed the database:
-	$ python seed.py
+		$ python seed.py
 
 Run the app from the command line.
-	$ python server.py
+		$ python server.py
 
 
 ##Todo:
