@@ -40,7 +40,9 @@ Register or login to create new projects, view projects, and edit projects.
 To run this app on your local computer:
 
 Clone repository:
+	```````
 	$ git clone https://github.com/cami20/homebrew-project.git
+	````````
 
 Create a virtual environment:
 	$ virtualenv env
@@ -64,3 +66,4 @@ Run the app from the command line.
 ##Todo:
 
 * create links between ingredients and projects.
+* refactor
